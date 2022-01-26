@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import GamesListContainer from "./components/GamesList/GamesListContainer";
+import { compose } from "redux";
 
+import { Route, HashRouter, withRouter } from "react-router-dom";
+import { Provider, connect } from "react-redux";
+import { requestGames } from "./redux/shop-reducer";
+import store from "./redux/redux-store";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GamesListContainer />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  initialized: state.shop.initialized,
+});
+
+let AppContainer = compose(connect(mapStateToProps, { requestGames }))(App);
+
+const MainApp = (props) => {
+  return (
+    <HashRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </HashRouter>
+  );
+};
+
+export default MainApp;
