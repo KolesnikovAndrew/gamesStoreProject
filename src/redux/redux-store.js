@@ -1,5 +1,5 @@
 import { applyMiddleware, createStore, compose, combineReducers } from "redux";
-import shopReducer from "./shop-reducer";
+import shopReducer from "./shop/shop-reducer";
 import thunkMiddleware from "redux-thunk";
 
 let reducers = combineReducers({

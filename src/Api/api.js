@@ -18,6 +18,14 @@ export const shopAPI = {
         console.log(error);
       });
   },
+  getGame(id) {
+    return instance
+      .get(`https://free-to-play-games-database.p.rapidapi.com/api/game/${id}`)
+      .then((response) => response.data)
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
 };
 
 export default shopAPI;

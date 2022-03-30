@@ -1,5 +1,5 @@
 import React from "react";
-import { getGames, requestGames } from "../../redux/shop-reducer";
+import { getGames, requestGames } from "../../../redux/shop/shop-reducer";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import GameList from "./GameList";

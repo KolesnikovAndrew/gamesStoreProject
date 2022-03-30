@@ -1,4 +1,4 @@
-import { shopAPI } from "../Api/api";
+import { shopAPI } from "../../Api/api";
 
 const SET_GAMES = "SET_GAMES";
 

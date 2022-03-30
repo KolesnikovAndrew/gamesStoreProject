@@ -1,15 +1,25 @@
 import "./App.css";
-import GamesListContainer from "./components/GamesList/GamesListContainer";
+import GamesListContainer from "./components/Pages/GamesList/GamesListContainer";
 import { compose } from "redux";
 
-import { Route, HashRouter, withRouter } from "react-router-dom";
+import { Route, HashRouter, withRouter, Routes } from "react-router-dom";
 import { Provider, connect } from "react-redux";
-import { requestGames } from "./redux/shop-reducer";
+import { requestGames } from "./redux/shop/shop-reducer";
 import store from "./redux/redux-store";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Product from "./components/Pages/Product/Product";
+
+
 function App() {
   return (
     <div className="App">
-      <GamesListContainer />
+      <Header />
+      <Routes>
+        <Route path="/" element={<GamesListContainer />} />
+        <Route path="/1" element={<Product/>}/>
+      </Routes>
+      <Footer />
     </div>
   );
 }
@@ -20,7 +30,7 @@ const mapStateToProps = (state) => ({
 
 let AppContainer = compose(connect(mapStateToProps, { requestGames }))(App);
 
-const MainApp = (props) => {
+export const MainApp = (props) => {
   return (
     <HashRouter>
       <Provider store={store}>
