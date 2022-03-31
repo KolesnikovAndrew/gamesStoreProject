@@ -1,8 +1,9 @@
 import React from 'react'
 
-export const Product = () => {
+export const Product = (props) => {
+  
   return (
-    <div>Product</div>
+    <div>ABOBA</div>
     
   )
 }

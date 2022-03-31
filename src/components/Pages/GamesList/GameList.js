@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Paginator from "../../utils/Paginator/Paginator";
 import Game from "./Game/Game";
 
-export const GameList = ({ games }) => {
+export const GameList = ({ games }, props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(15);
 
@@ -18,7 +18,7 @@ export const GameList = ({ games }) => {
   let pagesCount = Math.ceil(games.length / productsPerPage);
   let separationSize = 10;
   let separationCount = pagesCount / separationSize;
-  console.log(currentProducts);
+
   return (
     <div>
       {currentProducts.map((g) => (
@@ -31,6 +31,8 @@ export const GameList = ({ games }) => {
             description={g.short_description}
             genre={g.genre}
             platform={g.platform}
+            id={g.id}
+            setProductId={props.setProductId}
           />
         </div>
       ))}

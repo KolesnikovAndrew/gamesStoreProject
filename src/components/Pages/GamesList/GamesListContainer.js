@@ -4,14 +4,15 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import GameList from "./GameList";
 
-class GamesListContainer extends React.Component {
+export class GamesListContainer extends React.Component {
   componentDidMount() {
+    
     this.props.requestGames();
   }
   render() {
     return (
       <div>
-        <GameList games={this.props.games} />
+        <GameList games={this.props.games}  />
       </div>
     );
   }
