@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/gamesStoreProject/static/css/main.e20650a5.css",
+    "main.js": "/gamesStoreProject/static/js/main.9b11a9c6.js",
+    "static/js/787.edd59a96.chunk.js": "/gamesStoreProject/static/js/787.edd59a96.chunk.js",
+    "index.html": "/gamesStoreProject/index.html",
+    "main.e20650a5.css.map": "/gamesStoreProject/static/css/main.e20650a5.css.map",
+    "main.9b11a9c6.js.map": "/gamesStoreProject/static/js/main.9b11a9c6.js.map",
+    "787.edd59a96.chunk.js.map": "/gamesStoreProject/static/js/787.edd59a96.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e20650a5.css",
+    "static/js/main.9b11a9c6.js"
+  ]
+}
