@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import Paginator from "../../utils/Paginator/Paginator";
 import Game from "./Game/Game";
+import { setProduct } from "../../../redux/shop/shop-reducer";
+import { NavLink } from "react-router-dom";
 
-export const GameList = ({ games }, props) => {
+
+
+export const GameList = ({ games, setCount, setProduct, product  }) => {
+
+
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(15);
 
@@ -18,12 +24,11 @@ export const GameList = ({ games }, props) => {
   let pagesCount = Math.ceil(games.length / productsPerPage);
   let separationSize = 10;
   let separationCount = pagesCount / separationSize;
-
+ 
   return (
     <div>
       {currentProducts.map((g) => (
-        
-        <div>
+          <NavLink to={'/product/'+g.id}>
           <Game
             key={g.id}
             title={g.title}
@@ -32,9 +37,12 @@ export const GameList = ({ games }, props) => {
             genre={g.genre}
             platform={g.platform}
             id={g.id}
-            setProductId={props.setProductId}
+            setCount={setCount}
+            setProduct={setProduct}
+            product={product}
           />
-        </div>
+          </NavLink>
+      
       ))}
       <Paginator
         productsPerPage={productsPerPage}

@@ -1,10 +1,10 @@
 import React from "react";
-import { getProduct, setProduct, requestGame, getGames, requestGames } from "../../../redux/shop/shop-reducer";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import Product from "./Product";
+import Cart from "./Cart";
+import { getCart } from "../../../redux/cart/cart-reducer";
 
-export class ProductListContainer extends React.Component {
+export class CartContainer extends React.Component {
  
   componentDidMount() {
   }
@@ -12,7 +12,7 @@ export class ProductListContainer extends React.Component {
   render() {
     return (
       <div>
-        <Product  count={this.props.count} />
+        <Cart cart={this.props.cart}/>
       </div>
     );
   }
@@ -20,9 +20,10 @@ export class ProductListContainer extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
+    cart: getCart(state)
   };
 };
 
 export default compose(
   connect(mapStateToProps)
-)(ProductListContainer);
+)(CartContainer);

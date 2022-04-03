@@ -6,7 +6,7 @@ const SET_PRODUCT = "SET_PRODUCT";
 let initialState = {
   games: [],
   initialized: false,
-  product: '10',
+  product: '',
 };
 
 const shopReducer = (state = initialState, action) => {
@@ -48,11 +48,6 @@ export const requestGames = () => {
   };
 };
 
-export const requestGame = (gameId) => {
-  return async (dispatch) => {
-    let data = await shopAPI.getGame(gameId);
-    dispatch(setGames(data));
-  };
-}
+
 
 export default shopReducer;

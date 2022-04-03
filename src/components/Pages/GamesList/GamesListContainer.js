@@ -1,18 +1,17 @@
 import React from "react";
-import { getGames, requestGames } from "../../../redux/shop/shop-reducer";
+import { getGames, requestGames, getProduct, setProduct } from "../../../redux/shop/shop-reducer";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import GameList from "./GameList";
 
 export class GamesListContainer extends React.Component {
   componentDidMount() {
-    
     this.props.requestGames();
   }
   render() {
     return (
       <div>
-        <GameList games={this.props.games}  />
+        <GameList games={this.props.games} product={this.props.product} setCount={this.props.setCount} setProduct={this.props.setProduct}  />
       </div>
     );
   }
@@ -21,6 +20,8 @@ export class GamesListContainer extends React.Component {
 let mapStateToProps = (state) => {
   return {
     games: getGames(state),
+    product: getProduct(state),
+    setProduct: setProduct,
   };
 };
 
