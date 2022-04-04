@@ -5,9 +5,7 @@ import { NavLink } from "react-router-dom";
 
 export const Game = (props) => {
    function onProductClick(){
-
     props.setCount(props.id)
-    console.log(props.product);
   }
 
   return (

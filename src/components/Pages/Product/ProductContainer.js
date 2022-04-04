@@ -12,7 +12,7 @@ export class ProductListContainer extends React.Component {
   render() {
     return (
       <div>
-        <Product  count={this.props.count} />
+        <Product addEntry={this.props.addEntry} count={this.props.count} />
       </div>
     );
   }
@@ -22,7 +22,11 @@ let mapStateToProps = (state) => {
   return {
   };
 };
-
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addEntry: (gameData) => {dispatch({type: 'ADD_ENTRY', gameData})}
+  }
+}
 export default compose(
-  connect(mapStateToProps)
+  connect(mapStateToProps, mapDispatchToProps)
 )(ProductListContainer);

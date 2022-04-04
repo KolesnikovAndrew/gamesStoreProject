@@ -1,15 +1,20 @@
 import React from 'react'
 import styles from './CartPanel.module.scss'
-export const CartPanel = () => {
+import {AiFillWindows} from 'react-icons/ai'
+export const CartPanel = (props) => {
+  let deleteEntry =() => {
+    console.log(props.id);
+    props.removeEntry(props.id)
+  }
   return (
-    <div>
+    <div className={styles.cartPanel}>
       <div className={styles.gameInfo}>
-        <img src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Rhuj5QZ2cKSYlN61iquqzgHaEa%26pid%3DApi&f=1'></img>
-        <p>Game Name</p>
-        <p>Plarform</p>
+        <img className={styles.thumbnail} src={props.thumbnail}></img>
+        <p>{props.title}</p>
+        <p>{props.platforms == 'PC (Windows)'?  <span><AiFillWindows/></span>: ''}</p>
         <div className={styles.gamePrice}>
-          <p>15.99$</p>
-          <p>delete</p>
+          <p>{props.price == 0.00? 'Free': props.price+' €'}</p>
+          <button className={styles.deleteButton} onClick={deleteEntry}>delete</button>
         </div>
       </div>
     </div>
