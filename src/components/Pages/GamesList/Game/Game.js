@@ -11,7 +11,7 @@ export const Game = (props) => {
   return (
     
     <div className={styles.gameCard} onClick={onProductClick}>
-    <img className={styles.thumbnail} src={props.thumbnail}></img>
+     <NavLink to={'/product/'+props.id}><img className={styles.thumbnail} src={props.thumbnail}></img>   </NavLink>
       <h1>{props.title}</h1>
       <p className={styles.description}>{props.description}</p>
       <p>Genres: {props.genre}</p>

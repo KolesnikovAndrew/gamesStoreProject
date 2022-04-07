@@ -3,6 +3,7 @@ import Paginator from "../../utils/Paginator/Paginator";
 import Game from "./Game/Game";
 import { setProduct } from "../../../redux/shop/shop-reducer";
 import { NavLink } from "react-router-dom";
+import Searchbar from "../../Searchbar/Searchbar";
 
 
 
@@ -14,7 +15,7 @@ export const GameList = ({ games, setCount, setProduct, product  }) => {
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = games.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentGames = games;
 
   const paginate = () => {
     setProductsPerPage(productsPerPage + 15);
@@ -24,11 +25,28 @@ export const GameList = ({ games, setCount, setProduct, product  }) => {
   let pagesCount = Math.ceil(games.length / productsPerPage);
   let separationSize = 10;
   let separationCount = pagesCount / separationSize;
- 
+  const [filterData, setFilterData] = useState('')
+  
+  const checkFilter=(game)=>{
+    if(filterData !='') {
+      if(game.title.toLowerCase().indexOf(filterData.toLowerCase()) > -1) {
+        return(game.title)
+      } else {
+        return 0
+      }
+    } else {
+      return games
+    }
+    
+  }
+
+  const [searchParam] = useState(["title"]);
   return (
+    
     <div>
-      {currentProducts.map((g) => (
-          <NavLink to={'/product/'+g.id}>
+      <Searchbar setFilterData={setFilterData}/>
+      <div>
+      {games.filter(checkFilter).slice(indexOfFirstProduct, indexOfLastProduct).map((g) => (
           <Game
             key={g.id}
             title={g.title}
@@ -41,9 +59,8 @@ export const GameList = ({ games, setCount, setProduct, product  }) => {
             setProduct={setProduct}
             product={product}
           />
-          </NavLink>
-      
-      ))}
+      ))} 
+      </div>
       <Paginator
         productsPerPage={productsPerPage}
         totalProducts={games.length}

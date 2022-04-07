@@ -35,6 +35,10 @@ export const getGames = (state) => {
   //console.log("Get Games:"+state);
   return state.shop.games;
 };
+
+export const getFilteredGames = (state, filter) => {
+  return state.shop.games;
+}
 export const setProduct = (product) => ({type: SET_PRODUCT, product})
 export const getProduct = (state) => {
   //console.log("Get product"+state);

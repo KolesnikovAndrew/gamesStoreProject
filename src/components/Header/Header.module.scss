@@ -7,6 +7,7 @@
   height: 100px;
   width: 100%;
   gap: 20px;
+  text-decoration: none;
 }
 
 .cartIcon {
@@ -17,4 +18,9 @@
   padding: 5px 10px 2px 10px;
   text-decoration: none;
   margin-right: 20px;
+}
+
+.logo {
+  text-decoration: none;
+  color: white;
 }
