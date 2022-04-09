@@ -8,6 +8,10 @@
   width: 100%;
   gap: 20px;
   text-decoration: none;
+
+  :hover {
+    color: grey;
+  }
 }
 
 .cartIcon {
@@ -23,4 +27,10 @@
 .logo {
   text-decoration: none;
   color: white;
+  transition: 1s;
+
+  h1 {
+    font-size: 40px;
+  }
+
 }

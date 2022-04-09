@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Paginator from "../../utils/Paginator/Paginator";
 import Game from "./Game/Game";
 import { setProduct } from "../../../redux/shop/shop-reducer";
 import { NavLink } from "react-router-dom";
 import Searchbar from "../../Searchbar/Searchbar";
-
-
+import GamesCarousel from "../../utils/Carousel/Carousel";
+import styles from "./GameList.module.scss"
+import {carouselBackground} from "../../../assets/carouselBackground.png"
 
 export const GameList = ({ games, setCount, setProduct, product  }) => {
 
@@ -25,28 +26,44 @@ export const GameList = ({ games, setCount, setProduct, product  }) => {
   let pagesCount = Math.ceil(games.length / productsPerPage);
   let separationSize = 10;
   let separationCount = pagesCount / separationSize;
-  const [filterData, setFilterData] = useState('')
-  
-  const checkFilter=(game)=>{
-    if(filterData !='') {
-      if(game.title.toLowerCase().indexOf(filterData.toLowerCase()) > -1) {
-        return(game.title)
-      } else {
-        return 0
-      }
+  const [filterText, setFilterText] = useState('')
+  const [filterGenre, setFIlterGenre] = useState('')
+
+  const checkTextFilter=(game)=>{
+    if(filterText !='') {
+      if(game.title.toLowerCase().indexOf(filterText.toLowerCase()) > -1) {
+          return(game.title)
+        } else {
+          return 0
+        }
     } else {
       return games
-    }
+    } 
+  }
+  const checkGenreFilter=(game)=>{
     
+    if(filterGenre !='') {
+      if(game.genre.toLowerCase().indexOf(filterGenre.toLowerCase()) > -1) {
+          return(game.title)
+        } else {
+          return 0
+        }
+    } else {
+      return games
+    } 
   }
 
-  const [searchParam] = useState(["title"]);
+
   return (
     
     <div>
-      <Searchbar setFilterData={setFilterData}/>
+      <div className={styles.carouselContainer} >
+        <GamesCarousel/>
+      </div>
+      
+      <Searchbar setFIlterGenre={setFIlterGenre} setFilterText={setFilterText}/>
       <div>
-      {games.filter(checkFilter).slice(indexOfFirstProduct, indexOfLastProduct).map((g) => (
+      {games.filter(checkTextFilter).filter(checkGenreFilter).slice(indexOfFirstProduct, indexOfLastProduct).map((g) => (
           <Game
             key={g.id}
             title={g.title}
