@@ -4,20 +4,17 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
-import styles from "./Searchbar.module.scss"
 import {AiOutlineArrowDown, AiOutlineArrowUp} from 'react-icons/ai'
+import styles from "./Searchbar.module.scss"
+
+
+const genres = ['Shooter', 'MMORPG', 'Card Game']
+
 export const Searchbar = ({setFilterText, setFIlterGenre}) => {
   const [moreOptions, setMoreOptions] = useState(false)
-  const getFilterData=(e)=>{
-    setFilterText(e.target.value) 
-  }
-  const getFilterGenre=(e)=>{
-    if(e.target.checked == true) {
-      setFIlterGenre(e.target.value) 
-    } else {
-      setFIlterGenre('')
-    }
-    
+  const getFilterData = (e) =>{setFilterText(e.target.value)}
+  const getFilterGenre = (e) =>{
+    e.target.checked ? setFIlterGenre(e.target.value) : setFIlterGenre('')
   }
   return (
     <div className={styles.searchBar}>
@@ -31,31 +28,29 @@ export const Searchbar = ({setFilterText, setFIlterGenre}) => {
             aria-describedby="basic-addon2"
           />
         </InputGroup>
-        <p className={styles.moreOptions} onClick={()=> setMoreOptions(!moreOptions)}>{moreOptions == false ? <span>More options<AiOutlineArrowDown/></span>: <span>Hide options<AiOutlineArrowUp/></span>}</p>
+        <p className={styles.moreOptions} onClick={()=> setMoreOptions(!moreOptions)}>
+          <span>{moreOptions? <>Hide options<AiOutlineArrowUp/></> : <>More options<AiOutlineArrowDown/></>}</span>
+        </p>
       </div>
-      
-      { moreOptions == true ? 
+      { moreOptions ? 
         <div className={styles.searchOptions} >
             <h3>Genres:</h3>
           <ul>
-            <li>
-              <input type="checkbox" id="shooter" name="shooter" value="shooter" onChange={getFilterGenre}/>
-              <label for="shooter"> Shooter</label>
-            </li>
-            <li>
-              <input type="checkbox" id="MMORPG" name="MMORPG" value="MMORPG" onChange={getFilterGenre}/>
-              <label for="MMORPG"> MMORPG</label>
-            </li>
-            <li>
-              <input type="checkbox" id="Card game" name="Card game" value="Card game" onChange={getFilterGenre}/>
-              <label for="Card game"> Card game</label>
-            </li>
+            {
+              genres.map((genre)=>{
+                return <>
+                  <li>
+                    <input type="checkbox" id={genre} name={genre} value={genre} onChange={getFilterGenre}/>
+                    <label for={genre}> {genre}</label>
+                  </li>
+                </>
+              })
+            }
           </ul>
         </div>
-       : ''
+       : null
       }
       </div>
-   
   )
 }
 

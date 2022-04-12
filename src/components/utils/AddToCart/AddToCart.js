@@ -2,7 +2,7 @@ import React from 'react'
 
 export const AddToCart = ({price, title, platform, thumbnail, addEntry}) => {
   const onAddToCart =()=>{
-    let gameData = [title, thumbnail, parseFloat(price), platform]
+    let gameData = {"title": title, "thumbnail":thumbnail, "price": parseFloat(price), "platform":platform}
     addEntry(gameData)
   }
   return (

@@ -2,14 +2,13 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import AddToCart from '../../utils/AddToCart/AddToCart';
 
-export const Product = (props) => {
+export const Product = ({addEntry, count}) => {
   let price = (Math.random()*100).toFixed(2)
   let selectedGame = []
   const games = useSelector(state => state.shop.games)
   for(let i=0;i < games.length; i++) {
-    if(games[i].id == props.count) {
+    if(games[i].id == count) {
       selectedGame = games[i];
-      
     };
   }
   
@@ -22,7 +21,7 @@ export const Product = (props) => {
     <p>Genres: {selectedGame.genre}</p>
     <p>{selectedGame.platform == 'PC (Windows)'? 'Windows': 'Platforms'}</p>
     <p>{price}</p>
-    {<AddToCart price={price} title={selectedGame.title} platform={selectedGame.platform} thumbnail={selectedGame.thumbnail} addEntry={props.addEntry}/>}
+    {<AddToCart price={price} title={selectedGame.title} platform={selectedGame.platform} thumbnail={selectedGame.thumbnail} addEntry={addEntry}/>}
   </div>
   )
 }

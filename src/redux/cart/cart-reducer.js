@@ -5,8 +5,6 @@ const ADD_ENTRY = 'ADD_ENTRY'
 const SET_CARTLIST = 'SET_CARTLIST'
 let initialState = {
   cartList: [],
-  
-  
 };
 
 const cartReducer = (state = initialState, action) => {

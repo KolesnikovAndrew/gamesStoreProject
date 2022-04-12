@@ -47,7 +47,9 @@ export const getProduct = (state) => {
 
 export const requestGames = () => {
   return async (dispatch) => {
+
     let data = await shopAPI.getGames();
+    console.log(data)
     dispatch(setGames(data));
   };
 };

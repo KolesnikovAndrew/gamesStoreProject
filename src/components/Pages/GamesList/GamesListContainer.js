@@ -21,6 +21,7 @@ let mapStateToProps = (state) => {
   return {
     games: getGames(state),
     product: getProduct(state),
+    
     setProduct: setProduct,
   };
 };

@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Paginator from "../../utils/Paginator/Paginator";
 import Game from "./Game/Game";
-import { setProduct } from "../../../redux/shop/shop-reducer";
-import { NavLink } from "react-router-dom";
 import Searchbar from "../../Searchbar/Searchbar";
 import GamesCarousel from "../../utils/Carousel/Carousel";
 import styles from "./GameList.module.scss"
-import {carouselBackground} from "../../../assets/carouselBackground.png"
 
 export const GameList = ({ games, setCount, setProduct, product  }) => {
 
-
-  const [currentPage, setCurrentPage] = useState(1);
+  //Pagination
+  const [currentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(15);
 
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -22,37 +19,14 @@ export const GameList = ({ games, setCount, setProduct, product  }) => {
     setProductsPerPage(productsPerPage + 15);
   };
 
-  //Fix infinite pages
-  let pagesCount = Math.ceil(games.length / productsPerPage);
-  let separationSize = 10;
-  let separationCount = pagesCount / separationSize;
+  //Filter games
   const [filterText, setFilterText] = useState('')
   const [filterGenre, setFIlterGenre] = useState('')
 
-  const checkTextFilter=(game)=>{
-    if(filterText !='') {
-      if(game.title.toLowerCase().indexOf(filterText.toLowerCase()) > -1) {
-          return(game.title)
-        } else {
-          return 0
-        }
-    } else {
-      return games
-    } 
-  }
-  const checkGenreFilter=(game)=>{
-    
-    if(filterGenre !='') {
-      if(game.genre.toLowerCase().indexOf(filterGenre.toLowerCase()) > -1) {
-          return(game.title)
-        } else {
-          return 0
-        }
-    } else {
-      return games
-    } 
-  }
-
+  const filteredGames = 
+    games
+      .filter(game => game.title.toLowerCase().match(filterText.toLowerCase()))
+      .filter(game => game.genre.toLowerCase().match(filterGenre.toLowerCase()))
 
   return (
     
@@ -63,7 +37,7 @@ export const GameList = ({ games, setCount, setProduct, product  }) => {
       
       <Searchbar setFIlterGenre={setFIlterGenre} setFilterText={setFilterText}/>
       <div>
-      {games.filter(checkTextFilter).filter(checkGenreFilter).slice(indexOfFirstProduct, indexOfLastProduct).map((g) => (
+      {filteredGames.slice(indexOfFirstProduct, indexOfLastProduct).map((g) => (
           <Game
             key={g.id}
             title={g.title}

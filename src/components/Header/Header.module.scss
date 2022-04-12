@@ -9,7 +9,7 @@
   gap: 20px;
   text-decoration: none;
 
-  :hover {
+  &:hover {
     color: grey;
   }
 }
@@ -29,7 +29,7 @@
   color: white;
   transition: 1s;
 
-  h1 {
+  &h1 {
     font-size: 40px;
   }
 
