@@ -30,7 +30,7 @@ export const GameList = ({ games, setCount, setProduct, product }) => {
     );
 
   return (
-    <div>
+    <div className={styles.gamelist}>
       <div className={styles.carouselContainer}>
         <GamesCarousel />
       </div>
