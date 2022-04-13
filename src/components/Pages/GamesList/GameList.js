@@ -3,10 +3,10 @@ import Paginator from "../../utils/Paginator/Paginator";
 import Game from "./Game/Game";
 import Searchbar from "../../Searchbar/Searchbar";
 import GamesCarousel from "../../utils/Carousel/Carousel";
-import styles from "./GameList.module.scss"
+import styles from "./GameList.module.scss";
 
-export const GameList = ({ games, setCount, setProduct, product  }) => {
-
+export const GameList = ({ games, setCount, setProduct, product }) => {
+  console.log(games);
   //Pagination
   const [currentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(15);
@@ -20,37 +20,42 @@ export const GameList = ({ games, setCount, setProduct, product  }) => {
   };
 
   //Filter games
-  const [filterText, setFilterText] = useState('')
-  const [filterGenre, setFIlterGenre] = useState('')
+  const [filterText, setFilterText] = useState("");
+  const [filterGenre, setFIlterGenre] = useState("");
 
-  const filteredGames = 
-    games
-      .filter(game => game.title.toLowerCase().match(filterText.toLowerCase()))
-      .filter(game => game.genre.toLowerCase().match(filterGenre.toLowerCase()))
+  const filteredGames = games
+    .filter((game) => game.title.toLowerCase().match(filterText.toLowerCase()))
+    .filter((game) =>
+      game.genre.toLowerCase().match(filterGenre.toLowerCase())
+    );
 
   return (
-    
     <div>
-      <div className={styles.carouselContainer} >
-        <GamesCarousel/>
+      <div className={styles.carouselContainer}>
+        <GamesCarousel />
       </div>
-      
-      <Searchbar setFIlterGenre={setFIlterGenre} setFilterText={setFilterText}/>
+
+      <Searchbar
+        setFIlterGenre={setFIlterGenre}
+        setFilterText={setFilterText}
+      />
       <div>
-      {filteredGames.slice(indexOfFirstProduct, indexOfLastProduct).map((g) => (
-          <Game
-            key={g.id}
-            title={g.title}
-            thumbnail={g.thumbnail}
-            description={g.short_description}
-            genre={g.genre}
-            platform={g.platform}
-            id={g.id}
-            setCount={setCount}
-            setProduct={setProduct}
-            product={product}
-          />
-      ))} 
+        {filteredGames
+          .slice(indexOfFirstProduct, indexOfLastProduct)
+          .map((g) => (
+            <Game
+              key={g.id}
+              title={g.title}
+              thumbnail={g.thumbnail}
+              description={g.short_description}
+              genre={g.genre}
+              platform={g.platform}
+              id={g.id}
+              setCount={setCount}
+              setProduct={setProduct}
+              product={product}
+            />
+          ))}
       </div>
       <Paginator
         productsPerPage={productsPerPage}
