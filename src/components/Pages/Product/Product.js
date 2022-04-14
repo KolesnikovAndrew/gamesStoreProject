@@ -24,7 +24,9 @@ export const Product = ({ addEntry, count }) => {
         <h1>{selectedGame.title}</h1>
         <p>Publisher: {selectedGame.publisher}</p>
         <p>Realease date: {selectedGame.release_date}</p>
+        <hr />
         <p>{selectedGame.short_description}</p>
+        <hr />
         <p>Genres: {selectedGame.genre}</p>
         <p>
           Platfroms:
@@ -34,6 +36,7 @@ export const Product = ({ addEntry, count }) => {
         </p>
       </div>
       <div className={styles.addtocart}>
+        <p>Buy {selectedGame.title.toUpperCase()}</p>
         <p>{price} €</p>
         {
           <AddToCart
@@ -45,7 +48,7 @@ export const Product = ({ addEntry, count }) => {
           />
         }
       </div>
-      <div>
+      <div className={styles.aboutGame}>
         <h1>About this game:</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -54,12 +57,14 @@ export const Product = ({ addEntry, count }) => {
           Habitant morbi tristique senectus et. Pretium nibh ipsum consequat
           nisl vel pretium lectus. Luctus venenatis lectus magna fringilla urna.
           <br />
+          <hr />
           Bibendum neque egestas congue quisque. Vitae sapien pellentesque
           habitant morbi tristique senectus et. Magna ac placerat vestibulum
           lectus mauris ultrices eros in cursus. Mi eget mauris pharetra et
           ultrices. Aliquam malesuada bibendum arcu vitae elementum curabitur
           vitae nunc sed. Magnis dis parturient montes nascetur ridiculus mus.
           <br />
+          <hr />
           Egestas sed sed risus pretium quam vulputate. Duis at tellus at urna
           condimentum mattis pellentesque. Vitae auctor eu augue ut lectus arcu
           bibendum. Nisl purus in mollis nunc sed id semper. Diam sit amet nisl
@@ -68,6 +73,7 @@ export const Product = ({ addEntry, count }) => {
           velit ut tortor pretium. Orci phasellus egestas tellus rutrum tellus
           pellentesque eu.
           <br />
+          <hr />
           Sit amet risus nullam eget felis eget. Dolor morbi non arcu risus
           quis. Dolor sed viverra ipsum nunc aliquet bibendum enim facilisis.
           Pellentesque massa placerat duis ultricies. Lobortis elementum nibh

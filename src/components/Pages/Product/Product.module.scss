@@ -6,12 +6,8 @@
   }
 
   .gameinfo {
-    
-    margin: 7px;
     background-color: #2b2b2b;
     padding: 10px;
-   
-  
   }
 
   h1 {
@@ -32,4 +28,14 @@
 
 h2 {
   margin-left: 10px;
+}
+
+.aboutGame {
+  padding: 20px;
+  margin-top: 50px;
+  text-align: justify;
+  background-color: #2b2b2b;
+  h1 {
+    text-align: left;
+  }
 }

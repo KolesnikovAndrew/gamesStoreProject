@@ -8,12 +8,15 @@ export const Review = () => {
         <AiFillLike />
       </span>
       <h1>Recommend</h1>
+      <hr />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Pretium nibh ipsum
         consequat nisl vel.
       </p>
+      <hr />
       <p>Was this review helpful?</p>
+
       <span>
         <AiFillLike />
         Yes
