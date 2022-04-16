@@ -20,23 +20,25 @@ export const Product = ({ addEntry, count }) => {
 
   return (
     <div className={styles.product}>
-      <img src={selectedGame.thumbnail}></img>
       <div className={styles.gameinfo}>
-        <h1>{selectedGame.title}</h1>
-        <p>Publisher: {selectedGame.publisher}</p>
-        <p>Realease date: {selectedGame.release_date}</p>
-        <hr />
-        <p>{selectedGame.short_description}</p>
-        <hr />
-        <p>Genres: {selectedGame.genre}</p>
-        <p>
-          Platfroms:
-          {selectedGame.platform == PLATFORMS.PC_WINDOWS
-            ? " Windows"
-            : " Platforms"}
-        </p>
+        <img src={selectedGame.thumbnail}></img>
+        <div className={styles.gameInfoText}>
+          <h1>{selectedGame.title}</h1>
+          <p>Publisher: {selectedGame.publisher}</p>
+          <p>Realease date: {selectedGame.release_date}</p>
+          <hr />
+          <p>{selectedGame.short_description}</p>
+          <hr />
+          <p>Genres: {selectedGame.genre}</p>
+          <p>
+            Platfroms:
+            {selectedGame.platform == PLATFORMS.PC_WINDOWS
+              ? " Windows"
+              : " Platforms"}
+          </p>
+        </div>
       </div>
-      <div className={styles.addtocart}>
+      <div className={styles.addToCart}>
         <div className={styles.addToCartText}>
           <p>Buy {selectedGame.title.toUpperCase()}</p>
           <p>{price} €</p>
@@ -94,7 +96,8 @@ export const Product = ({ addEntry, count }) => {
       </div>
       <div>
         <h2>Rewievs:</h2>
-        <div>
+        <div className={styles.reviews}>
+          <Review />
           <Review />
           <Review />
           <Review />

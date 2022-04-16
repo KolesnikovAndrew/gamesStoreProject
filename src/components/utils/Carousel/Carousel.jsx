@@ -13,7 +13,7 @@ export const GamesCarousel = () => {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>Age of Empires 3</h3>
+            <h3>Age of Empires IV</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
         </Carousel.Item>
