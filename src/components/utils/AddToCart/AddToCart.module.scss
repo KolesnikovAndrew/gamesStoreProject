@@ -1,8 +1,14 @@
 .addToCartButton {
+ 
   button {
+    
     border: none;
     background-color: rgb(255, 94, 0);
     color: white;
+  }
+
+  button:active {
+    background-color: rgb(216, 93, 22);
   }
   
 }

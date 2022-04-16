@@ -1,13 +1,12 @@
 import React from "react";
-import { getProduct, setProduct, requestGame, getGames, requestGames } from "../../../redux/shop/shop-reducer";
+
 import { compose } from "redux";
 import { connect } from "react-redux";
+
 import Product from "./Product";
 
 export class ProductListContainer extends React.Component {
- 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -19,14 +18,15 @@ export class ProductListContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return {
-  };
+  return {};
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addEntry: (gameData) => {dispatch({type: 'ADD_ENTRY', gameData})}
-  }
-}
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps)
-)(ProductListContainer);
+    addEntry: (gameData) => {
+      dispatch({ type: "ADD_ENTRY", gameData });
+    },
+  };
+};
+export default compose(connect(mapStateToProps, mapDispatchToProps))(
+  ProductListContainer
+);

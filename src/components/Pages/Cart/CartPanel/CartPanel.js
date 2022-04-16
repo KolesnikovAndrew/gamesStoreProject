@@ -3,17 +3,24 @@ import { AiFillWindows } from "react-icons/ai";
 
 import styles from "./CartPanel.module.scss";
 
-export const CartPanel = (props) => {
+export const CartPanel = ({
+  id,
+  thumbnail,
+  title,
+  platforms,
+  price,
+  removeEntry,
+}) => {
   const deleteEntry = () => {
-    props.removeEntry(props.id);
+    removeEntry(id);
   };
   return (
     <div className={styles.cartPanel}>
-      <div className={styles.gameInfo}>
-        <img className={styles.thumbnail} src={props.thumbnail}></img>
-        <p>{props.title}</p>
+      <div className={styles.cartContent}>
+        <img className={styles.thumbnail} src={thumbnail}></img>
+        <p>{title}</p>
         <p>
-          {props.platforms == "PC (Windows)" ? (
+          {platforms == "PC (Windows)" ? (
             <span>
               <AiFillWindows />
             </span>
@@ -22,9 +29,9 @@ export const CartPanel = (props) => {
           )}
         </p>
         <div className={styles.gamePrice}>
-          <p>{props.price == 0.0 ? "Free" : `${props.price} €`}</p>
+          <p>{price == 0.0 ? "Free" : `${price} €`}</p>
           <button className={styles.deleteButton} onClick={deleteEntry}>
-            delete
+            DELETE
           </button>
         </div>
       </div>

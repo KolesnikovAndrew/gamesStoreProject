@@ -1,6 +1,8 @@
 import React from "react";
-import styles from "./Review.module.scss";
 import { AiFillLike } from "react-icons/ai";
+
+import styles from "./Review.module.scss";
+
 export const Review = () => {
   return (
     <div className={styles.review}>

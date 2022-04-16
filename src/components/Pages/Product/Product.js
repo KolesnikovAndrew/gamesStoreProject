@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
 import Review from "../../Review/Review";
 import AddToCart from "../../utils/AddToCart/AddToCart";
 import { PLATFORMS } from "../../utils/constants";
@@ -36,17 +37,22 @@ export const Product = ({ addEntry, count }) => {
         </p>
       </div>
       <div className={styles.addtocart}>
-        <p>Buy {selectedGame.title.toUpperCase()}</p>
-        <p>{price} €</p>
-        {
-          <AddToCart
-            price={price}
-            title={selectedGame.title}
-            platform={selectedGame.platform}
-            thumbnail={selectedGame.thumbnail}
-            addEntry={addEntry}
-          />
-        }
+        <div className={styles.addToCartText}>
+          <p>Buy {selectedGame.title.toUpperCase()}</p>
+          <p>{price} €</p>
+        </div>
+
+        <div className={styles.addToCartButton}>
+          {
+            <AddToCart
+              price={price}
+              title={selectedGame.title}
+              platform={selectedGame.platform}
+              thumbnail={selectedGame.thumbnail}
+              addEntry={addEntry}
+            />
+          }
+        </div>
       </div>
       <div className={styles.aboutGame}>
         <h1>About this game:</h1>

@@ -1,36 +1,46 @@
-import React from 'react'
+import React from "react";
 
-import CartPanel from './CartPanel/CartPanel';
-import styles from './Cart.module.scss'
+import CartPanel from "./CartPanel/CartPanel";
+import styles from "./Cart.module.scss";
 
-export const Cart = ({cart, removeEntry}) => {
+export const Cart = ({ cart, removeEntry }) => {
   const sumPrices = () => {
-    switch(true) {
+    switch (true) {
       case cart.length > 1:
-        let result = cart.reduce((total, arr)=>{
-          return total.price + arr.price
-        })
-        return result    
+        let result = cart.reduce((total, arr) => {
+          return total.price + arr.price;
+        });
+        return result;
       case cart.length === 1:
-        return cart[0].price        
+        return cart[0].price;
       case cart.length < 1:
-        return '-'
+        return "-";
     }
-  } 
+  };
 
-  return (<>
-    <div className={styles.cart}>
-      {cart.length == 0? 'Your cart is empty!' : 
-      cart.map((game, id)=>{
-        return   <CartPanel title={game.title} thumbnail={game.thumbnail} price={game.price} platforms={game.platforms} id={id}  removeEntry={removeEntry}/>
-      })}
-       
-    </div>
-    <div>
-      <p>Total cost: {sumPrices()}  €</p>
-    </div>
-   </>
-  )
-}
+  return (
+    <>
+      <div className={styles.cart}>
+        {cart.length == 0
+          ? "Your cart is empty!"
+          : cart.map((game, id) => {
+              return (
+                <CartPanel
+                  title={game.title}
+                  thumbnail={game.thumbnail}
+                  price={game.price}
+                  platforms={game.platforms}
+                  id={id}
+                  removeEntry={removeEntry}
+                />
+              );
+            })}
+      </div>
+      <div className={styles.totalCost}>
+        <span>Total cost: {sumPrices()} €</span>
+      </div>
+    </>
+  );
+};
 
-export default Cart
+export default Cart;

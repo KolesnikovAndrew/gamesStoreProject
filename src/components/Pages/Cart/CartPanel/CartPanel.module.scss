@@ -1,32 +1,49 @@
 .cartPanel {
   background-color: #d66c6c;
   color: white;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 .deleteButton {
   border: none;
   background-color: #2b2b2b;
   color: white;
-  font-size: 20px;
-  padding: 10px;
+  font-size: 13px;
+  padding: 5px;
+  font-weight: bold;
   cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .deleteButton:hover {
   color: grey;
 }
 
-.gameInfo {
+.cartContent {
   display: flex;
-  gap: 100px
+  gap: 10px;
+  justify-content: space-between;
+  p {
+    padding-top: 10px;
+    font-size: 20px;
+  }
 }
 
 .gamePrice {
   display: flex;
   flex-direction: column;
+  text-align: right;
+  font-size: 20px;
+  padding-right: 10px;
+  justify-content: space-between;
 }
 
 .thumbnail {
   width: 200px;
   height: 112px;
+  border-radius: 5px;
 }

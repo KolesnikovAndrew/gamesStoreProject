@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import Paginator from "../../utils/Paginator/Paginator";
 import Game from "./Game/Game";
 import Searchbar from "../../Searchbar/Searchbar";

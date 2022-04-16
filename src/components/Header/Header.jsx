@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import styles from "./Header.module.scss"
 import { IoMdCart } from 'react-icons/io'
+
 import Balance from '../utils/Balance/Balance';
+import styles from "./Header.module.scss"
 export const Header = () => {
   return (
     <div className={styles.header}>
