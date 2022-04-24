@@ -1,7 +1,7 @@
 .cartContainer {
   margin: auto;
   background-color: rgb(156, 52, 52);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .emptyCarText {
@@ -45,7 +45,7 @@
   .cartContainer {
     margin: auto;
     background-color: rgb(156, 52, 52);
-    min-height: 800px;
+    
   }
 
   .cart {
