@@ -19,11 +19,13 @@ export const Cart = ({ cart, removeEntry }) => {
   };
 
   return (
-    <>
+    <div className={styles.cartContainer}>
       <div className={styles.cart}>
-        {cart.length == 0
-          ? "Your cart is empty!"
-          : cart.map((game, id) => {
+        <div className={styles.cartPanel}>
+          {cart.length == 0 ? (
+            <p className={styles.emptyCarText}>Your cart is empty!</p>
+          ) : (
+            cart.map((game, id) => {
               return (
                 <CartPanel
                   title={game.title}
@@ -34,12 +36,15 @@ export const Cart = ({ cart, removeEntry }) => {
                   removeEntry={removeEntry}
                 />
               );
-            })}
+            })
+          )}
+        </div>
+
+        <div className={styles.totalCost}>
+          <span>Total cost: {sumPrices()} €</span>
+        </div>
       </div>
-      <div className={styles.totalCost}>
-        <span>Total cost: {sumPrices()} €</span>
-      </div>
-    </>
+    </div>
   );
 };
 

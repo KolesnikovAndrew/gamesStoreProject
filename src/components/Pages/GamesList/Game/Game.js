@@ -5,27 +5,31 @@ import { NavLink } from "react-router-dom";
 import styles from "./Game.module.scss";
 
 export const Game = ({
-  setCount,
   id,
   thumbnail,
   title,
   description,
   genre,
   platform,
+  price,
+  setProduct,
+  setCount,
+  product,
 }) => {
   function onProductClick() {
+    setProduct(id);
     setCount(id);
   }
 
   return (
     <div className={styles.gameCard} onClick={onProductClick}>
       <NavLink to={"/product/" + id}>
-        <img className={styles.thumbnail} src={thumbnail}></img>{" "}
+        <img className={styles.thumbnail} src={thumbnail}></img>
       </NavLink>
       <h1>{title}</h1>
       <p className={styles.description}>{description}</p>
       <p>Genre: {genre}</p>
-
+      <p>{price} €</p>
       <p>
         {platform == "PC (Windows)" ? (
           <span>

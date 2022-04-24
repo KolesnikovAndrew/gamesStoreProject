@@ -1,5 +1,5 @@
 import React from "react";
-import { AiFillLike } from "react-icons/ai";
+import { AiFillLike, AiFillDislike } from "react-icons/ai";
 
 import styles from "./Review.module.scss";
 
@@ -24,7 +24,7 @@ export const Review = () => {
         Yes
       </span>
       <span>
-        <AiFillLike />
+        <AiFillDislike />
         No
       </span>
     </div>

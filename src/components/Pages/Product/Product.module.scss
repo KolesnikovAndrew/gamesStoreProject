@@ -75,7 +75,7 @@ h2 {
   }
 
   .aboutGame {
-    padding: 20px;
+    padding: 10px 20px !important;
     text-align: justify;
     background-color: #2b2b2b;
     justify-self: center;
@@ -84,7 +84,19 @@ h2 {
     width: 945px;
     h1 {
       text-align: left;
+      font-size: 25px;
     }
+  }
+
+  .aboutHeader {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .toggleAbout{
+    cursor: pointer;
   }
 
   .reviews {

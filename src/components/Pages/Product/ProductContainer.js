@@ -4,21 +4,26 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 
 import Product from "./Product";
+import { getProduct } from "../../../redux/shop/shop-reducer";
 
 export class ProductListContainer extends React.Component {
-  componentDidMount() {}
+  componentDidMount() {
+    console.log(this.props.product);
+  }
 
   render() {
     return (
       <div>
-        <Product addEntry={this.props.addEntry} count={this.props.count} />
+        <Product addEntry={this.props.addEntry} product={this.props.product} />
       </div>
     );
   }
 }
 
 let mapStateToProps = (state) => {
-  return {};
+  return {
+    product: getProduct(state),
+  };
 };
 const mapDispatchToProps = (dispatch) => {
   return {

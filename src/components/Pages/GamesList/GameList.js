@@ -7,7 +7,6 @@ import GamesCarousel from "../../utils/Carousel/Carousel";
 import styles from "./GameList.module.scss";
 
 export const GameList = ({ games, setCount, setProduct, product }) => {
-  console.log(games);
   //Pagination
   const [currentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(15);
@@ -52,9 +51,10 @@ export const GameList = ({ games, setCount, setProduct, product }) => {
               genre={g.genre}
               platform={g.platform}
               id={g.id}
-              setCount={setCount}
               setProduct={setProduct}
+              setCount={setCount}
               product={product}
+              price={g.price}
             />
           ))}
       </div>

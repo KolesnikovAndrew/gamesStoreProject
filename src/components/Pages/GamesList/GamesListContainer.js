@@ -29,17 +29,24 @@ export class GamesListContainer extends React.Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setProduct: (product) => {
+      dispatch({ type: "SET_PRODUCT", product });
+    },
+  };
+};
+
 let mapStateToProps = (state) => {
   return {
     games: getGames(state),
     product: getProduct(state),
-
-    setProduct: setProduct,
   };
 };
 
 export default compose(
   connect(mapStateToProps, {
     requestGames,
+    setProduct,
   })
 )(GamesListContainer);

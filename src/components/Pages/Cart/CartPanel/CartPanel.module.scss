@@ -12,7 +12,7 @@
   background-color: #2b2b2b;
   color: white;
   font-size: 13px;
-  padding: 5px;
+  padding: 10px;
   font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
@@ -46,4 +46,19 @@
   width: 200px;
   height: 112px;
   border-radius: 5px;
+}
+
+
+@media screen and (max-width: 400px) {
+  .cartContent { 
+    gap: 0;
+    p {
+      padding-top: 20px;
+      font-size: 17px;
+    }
+  }
+
+  .deleteButton {
+    padding: 10px;
+  }
 }

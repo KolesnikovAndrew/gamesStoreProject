@@ -14,15 +14,13 @@ import { useState } from "react";
 import CartContainer from "./components/Pages/Cart/CartContainer";
 
 function App({ product }) {
-  const [count, setCount] = useState(product);
+  let [count, setCount] = useState(1);
+
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route
-          path={"/product/" + count}
-          element={<ProductContainer count={count} />}
-        />
+        <Route path={"/product/" + product.id} element={<ProductContainer />} />
         <Route path={"/cart"} element={<CartContainer />} />
 
         <Route

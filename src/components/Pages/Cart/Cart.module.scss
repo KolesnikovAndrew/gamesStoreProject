@@ -1,3 +1,18 @@
+.cartContainer {
+  margin: auto;
+  background-color: rgb(156, 52, 52);
+  height: 100vh;
+}
+
+.emptyCarText {
+  background-color: #2b2b2b;
+  color: white;
+  padding: 50px;
+  text-align: center;
+  border-radius: 9px;
+  margin: 5px;
+}
+
 .cart {
   display: flex;
   flex-direction: column;
@@ -5,6 +20,14 @@
   padding: 5px;
   justify-content: center;
   overflow-x: hidden;
+
+}
+
+.cartPanel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .totalCost {
@@ -13,10 +36,51 @@
   padding: 6px;
   width: 150px;
   border-radius: 5px;
-  margin: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  float: right;
-   
+  
+  
+  background-color: #d66c6c;
+}
+
+//DESKTOP
+
+@media screen and (min-width: 965px) {
+  
+  .cartContainer {
+    margin: auto;
+    background-color: rgb(156, 52, 52);
+    height: 800px;
+  }
+
+  .cart {
+ 
+    display: flex;
+    align-items: flex-end;
+    background-color: rgb(156, 52, 52);
+    width: 700px;
+    margin: auto;
+    
+  }
+  
+  .cartPanel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+}
+
+//Small screen
+@media screen and (max-width: 400px) {
+  .cartContainer {
+    font-weight: 100;
+  }
+
+  .cart {
+    padding: 0;
+  }
+
+  .cartPanel {
+    font-weight: 100;
+  }
 }
