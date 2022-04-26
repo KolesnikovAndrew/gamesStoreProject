@@ -6,17 +6,23 @@ import Searchbar from "../../Searchbar/Searchbar";
 import GamesCarousel from "../../utils/Carousel/Carousel";
 import styles from "./GameList.module.scss";
 
-export const GameList = ({ games, setCount, setProduct, product }) => {
+export const GameList = ({
+  games,
+  setCount,
+  setProduct,
+  product,
+  addEntry,
+}) => {
   //Pagination
   const [currentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(15);
+  const [productsPerPage, setProductsPerPage] = useState(12);
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentGames = games;
 
   const paginate = () => {
-    setProductsPerPage(productsPerPage + 15);
+    setProductsPerPage(productsPerPage + 12);
   };
 
   //Filter games
@@ -30,7 +36,7 @@ export const GameList = ({ games, setCount, setProduct, product }) => {
     );
 
   return (
-    <div className={styles.gamelist}>
+    <div>
       <div className={styles.carouselContainer}>
         <GamesCarousel />
       </div>
@@ -39,7 +45,7 @@ export const GameList = ({ games, setCount, setProduct, product }) => {
         setFIlterGenre={setFIlterGenre}
         setFilterText={setFilterText}
       />
-      <div>
+      <div className={styles.gamelist}>
         {filteredGames
           .slice(indexOfFirstProduct, indexOfLastProduct)
           .map((g) => (
@@ -54,6 +60,7 @@ export const GameList = ({ games, setCount, setProduct, product }) => {
               setProduct={setProduct}
               setCount={setCount}
               price={g.price}
+              addEntry={addEntry}
             />
           ))}
       </div>

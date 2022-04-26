@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiFillWindows } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import AddToCart from "../../../utils/AddToCart/AddToCart";
 
 import styles from "./Game.module.scss";
 
@@ -13,6 +14,7 @@ export const Game = ({
   platform,
   price,
   setProduct,
+  addEntry,
 }) => {
   function onProductClick() {
     setProduct(id);
@@ -36,6 +38,18 @@ export const Game = ({
           "Platforms"
         )}
       </p>
+
+      <div className={styles.addToCartButton}>
+        {
+          <AddToCart
+            price={price}
+            title={title}
+            platform={platform}
+            thumbnail={thumbnail}
+            addEntry={addEntry}
+          />
+        }
+      </div>
     </div>
   );
 };

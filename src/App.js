@@ -5,22 +5,16 @@ import { Route, HashRouter, Routes } from "react-router-dom";
 import { Provider, connect } from "react-redux";
 
 import GamesListContainer from "./components/Pages/GamesList/GamesListContainer";
-import {
-  requestGames,
-  setProduct,
-  requestGame,
-} from "./redux/shop/shop-reducer";
+import { requestGames } from "./redux/shop/shop-reducer";
 import store from "./redux/redux-store";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ProductContainer from "./components/Pages/Product/ProductContainer";
-import { useEffect, useState } from "react";
 import CartContainer from "./components/Pages/Cart/CartContainer";
-import shopAPI from "./api/api";
 
-function App({ product }) {
+function App() {
   const id = window.location.hash.split("/")[2];
-  console.log(id);
+
   return (
     <div className="App">
       <Header />

@@ -1,7 +1,12 @@
 .addToCartButton {
- 
+  padding: 15px;
   button {
     height: 45px;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
     border: none;
     background-color: rgb(243, 74, 7);
     color: white;
@@ -16,3 +21,4 @@
   
   
 }
+

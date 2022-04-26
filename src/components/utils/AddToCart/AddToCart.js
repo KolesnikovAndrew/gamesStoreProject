@@ -1,5 +1,6 @@
 import React from "react";
-
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import styles from "./AddToCart.module.scss";
 
 export const AddToCart = ({ price, title, platform, thumbnail, addEntry }) => {
@@ -12,9 +13,15 @@ export const AddToCart = ({ price, title, platform, thumbnail, addEntry }) => {
     };
     addEntry(gameData);
   };
+
   return (
     <div className={styles.addToCartButton}>
-      <button onClick={onAddToCart}>Add to cart</button>
+      <Popup
+        onClick={onAddToCart}
+        trigger={<button className="button">Add To Cart</button>}
+      >
+        <span> Add To Cart </span>
+      </Popup>
     </div>
   );
 };

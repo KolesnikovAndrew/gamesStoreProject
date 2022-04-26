@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
 
 import Review from "../../Review/Review";
@@ -9,9 +8,8 @@ import { PLATFORMS } from "../../utils/constants";
 import styles from "./Product.module.scss";
 
 import shopAPI from "../../../api/api";
-import { getGames } from "../../../redux/shop/shop-reducer";
 
-export const Product = ({ addEntry, id, product }) => {
+export const Product = ({ addEntry, id }) => {
   const [about, setAbout] = useState(true);
 
   const [productFromAPI, setProductFromAPI] = useState(null);

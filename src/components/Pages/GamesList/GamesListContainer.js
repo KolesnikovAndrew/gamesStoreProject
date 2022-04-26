@@ -10,6 +10,7 @@ import {
   setProduct,
 } from "../../../redux/shop/shop-reducer";
 import GameList from "./GameList";
+import { addEntry } from "../../../redux/cart/cart-reducer";
 
 export class GamesListContainer extends React.Component {
   componentDidMount() {
@@ -23,19 +24,12 @@ export class GamesListContainer extends React.Component {
           product={this.props.product}
           setCount={this.props.setCount}
           setProduct={this.props.setProduct}
+          addEntry={this.props.addEntry}
         />
       </div>
     );
   }
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setProduct: (product) => {
-      dispatch({ type: "SET_PRODUCT", product });
-    },
-  };
-};
 
 let mapStateToProps = (state) => {
   return {
@@ -48,5 +42,6 @@ export default compose(
   connect(mapStateToProps, {
     requestGames,
     setProduct,
+    addEntry,
   })
 )(GamesListContainer);

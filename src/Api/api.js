@@ -18,7 +18,7 @@ export const shopAPI = {
         console.log(error);
       });
   },
-  getGame(id) {
+  async getGame(id) {
     return instance
       .get(`/game`, { params: { id: id } })
       .then((response) => response.data)
