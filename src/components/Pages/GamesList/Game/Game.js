@@ -13,12 +13,9 @@ export const Game = ({
   platform,
   price,
   setProduct,
-  setCount,
-  product,
 }) => {
   function onProductClick() {
     setProduct(id);
-    setCount(id);
   }
 
   return (

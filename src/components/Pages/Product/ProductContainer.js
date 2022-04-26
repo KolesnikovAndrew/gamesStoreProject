@@ -4,17 +4,21 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 
 import Product from "./Product";
-import { getProduct } from "../../../redux/shop/shop-reducer";
+import { getProduct, requestGame } from "../../../redux/shop/shop-reducer";
 
 export class ProductListContainer extends React.Component {
   componentDidMount() {
-    console.log(this.props.product);
+    requestGame(this.props.id);
   }
 
   render() {
     return (
       <div>
-        <Product addEntry={this.props.addEntry} product={this.props.product} />
+        <Product
+          addEntry={this.props.addEntry}
+          product={this.props.product}
+          id={this.props.id}
+        />
       </div>
     );
   }

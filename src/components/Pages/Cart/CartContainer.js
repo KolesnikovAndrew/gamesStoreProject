@@ -6,8 +6,6 @@ import Cart from "./Cart";
 import { getCart } from "../../../redux/cart/cart-reducer";
 
 export class CartContainer extends React.Component {
-  componentDidMount() {}
-
   render() {
     return (
       <div>

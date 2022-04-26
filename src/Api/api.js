@@ -1,4 +1,4 @@
-var axios = require("axios").default;
+import axios from "axios";
 
 const instance = axios.create({
   withCredentials: false,
@@ -12,7 +12,7 @@ const instance = axios.create({
 export const shopAPI = {
   getGames() {
     return instance
-      .get(`https://free-to-play-games-database.p.rapidapi.com/api/games`)
+      .get(`/games`)
       .then((response) => response.data)
       .catch(function (error) {
         console.log(error);
@@ -20,7 +20,7 @@ export const shopAPI = {
   },
   getGame(id) {
     return instance
-      .get(`https://free-to-play-games-database.p.rapidapi.com/api/game/${id}`)
+      .get(`/game`, { params: { id: id } })
       .then((response) => response.data)
       .catch(function (error) {
         console.log(error);

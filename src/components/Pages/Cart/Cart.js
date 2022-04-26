@@ -22,9 +22,7 @@ export const Cart = ({ cart, removeEntry }) => {
     <div className={styles.cartContainer}>
       <div className={styles.cart}>
         <div className={styles.cartPanel}>
-          {cart.length == 0 ? (
-            <p className={styles.emptyCarText}>Your cart is empty!</p>
-          ) : (
+          {cart.length ? (
             cart.map((game, id) => {
               return (
                 <CartPanel
@@ -37,6 +35,8 @@ export const Cart = ({ cart, removeEntry }) => {
                 />
               );
             })
+          ) : (
+            <p className={styles.emptyCarText}>Your cart is empty!</p>
           )}
         </div>
 

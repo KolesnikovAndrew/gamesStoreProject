@@ -53,7 +53,6 @@ export const GameList = ({ games, setCount, setProduct, product }) => {
               id={g.id}
               setProduct={setProduct}
               setCount={setCount}
-              product={product}
               price={g.price}
             />
           ))}

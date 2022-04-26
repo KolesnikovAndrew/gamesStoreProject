@@ -1,4 +1,4 @@
-import { shopAPI } from "../../Api/api";
+import { shopAPI } from "../../api/api";
 
 const SET_GAMES = "SET_GAMES";
 const SET_PRODUCT = "SET_PRODUCT";
@@ -6,7 +6,7 @@ const SET_PRODUCT = "SET_PRODUCT";
 let initialState = {
   games: [],
   initialized: false,
-  product: localStorage.getItem("product") || "",
+  product: "",
 };
 
 const shopReducer = (state = initialState, action) => {
@@ -24,7 +24,7 @@ const shopReducer = (state = initialState, action) => {
     }
     case SET_PRODUCT: {
       let selectetByIdProduct = state.games.find(
-        (product) => product.id == action.product
+        (product) => product.id === action.product
       );
 
       return {
@@ -55,6 +55,13 @@ export const requestGames = () => {
   return async (dispatch) => {
     let data = await shopAPI.getGames();
     dispatch(setGames(data));
+  };
+};
+
+export const requestGame = (id) => {
+  return async (dispatch) => {
+    let data = await shopAPI.getGame(id);
+    dispatch(setProduct(data));
   };
 };
 

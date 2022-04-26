@@ -50,7 +50,7 @@ export const Searchbar = ({ setFilterText, setFIlterGenre }) => {
       </div>
       {moreOptions ? (
         <div className={styles.searchOptions}>
-          <h3>Genres:</h3>
+          <h3>Genres</h3>
           <ul>
             {genres.map((genre) => {
               return (
@@ -69,7 +69,7 @@ export const Searchbar = ({ setFilterText, setFIlterGenre }) => {
               );
             })}
           </ul>
-          <h3></h3>
+          <h3>Price</h3>
         </div>
       ) : null}
     </div>

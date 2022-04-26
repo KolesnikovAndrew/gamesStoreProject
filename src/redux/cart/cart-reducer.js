@@ -1,8 +1,8 @@
-import { shopAPI } from "../../Api/api";
+import { shopAPI } from "../../api/api";
 
-const REMOVE_ENTRY = 'REMOVE_ENTRY'
-const ADD_ENTRY = 'ADD_ENTRY'
-const SET_CARTLIST = 'SET_CARTLIST'
+const REMOVE_ENTRY = "REMOVE_ENTRY";
+const ADD_ENTRY = "ADD_ENTRY";
+const SET_CARTLIST = "SET_CARTLIST";
 let initialState = {
   cartList: [],
 };
@@ -18,15 +18,14 @@ const cartReducer = (state = initialState, action) => {
     case REMOVE_ENTRY: {
       return {
         ...state,
-        cartList: state.cartList.filter((item, index) => index !=  action.id)
+        cartList: state.cartList.filter((item, index) => index != action.id),
       };
     }
     case ADD_ENTRY: {
-      
       return {
         ...state,
-        cartList: state.cartList.concat([action.gameData])
-      }
+        cartList: state.cartList.concat([action.gameData]),
+      };
     }
     default:
       return state;
@@ -35,12 +34,11 @@ const cartReducer = (state = initialState, action) => {
 
 export const setCartList = (cartList) => ({ type: SET_CARTLIST, cartList });
 
-
 export const getCart = (state) => {
   return state.cart.cartList;
 };
 
-export const removeEntry = (id) => ({ type: REMOVE_ENTRY, id })
-export const addEntry = (gameData) => ({type: ADD_ENTRY, gameData})
+export const removeEntry = (id) => ({ type: REMOVE_ENTRY, id });
+export const addEntry = (gameData) => ({ type: ADD_ENTRY, gameData });
 
 export default cartReducer;

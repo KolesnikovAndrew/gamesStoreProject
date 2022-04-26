@@ -1,6 +1,6 @@
-import { shopAPI } from "../../Api/api";
+import { shopAPI } from "../../api/api";
 
-const SET_BALANCE ='SET_BALANCE'
+const SET_BALANCE = "SET_BALANCE";
 let initialState = {
   balance: 1000,
 };
@@ -13,7 +13,7 @@ const balanceReducer = (state = initialState, action) => {
         balance: action.balance,
       };
     }
-    
+
     default:
       return state;
   }
@@ -22,7 +22,7 @@ const balanceReducer = (state = initialState, action) => {
 export const setCartList = (balance) => ({ type: SET_BALANCE, balance });
 
 export const getBalance = (state) => {
-  return state.balance
-}
+  return state.balance;
+};
 
-export default balanceReducer
+export default balanceReducer;
