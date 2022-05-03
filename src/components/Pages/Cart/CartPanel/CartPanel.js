@@ -29,7 +29,7 @@ export const CartPanel = ({
           )}
         </p>
         <div className={styles.gamePrice}>
-          <p>{price == 0.0 ? "Free" : `${price} €`}</p>
+          <p>{price == 0.0 ? "Free" : `${price} Coins`}</p>
           <button className={styles.deleteButton} onClick={deleteEntry}>
             DELETE
           </button>

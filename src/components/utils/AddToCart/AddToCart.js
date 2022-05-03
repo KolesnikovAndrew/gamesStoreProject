@@ -16,12 +16,9 @@ export const AddToCart = ({ price, title, platform, thumbnail, addEntry }) => {
 
   return (
     <div className={styles.addToCartButton}>
-      <Popup
-        onClick={onAddToCart}
-        trigger={<button className="button">Add To Cart</button>}
-      >
-        <span> Add To Cart </span>
-      </Popup>
+      <button onClick={onAddToCart} className="button">
+        Add To Cart
+      </button>
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { AiFillWindows } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import AddToCart from "../../../utils/AddToCart/AddToCart";
-
+import Gold from "../../../../assets/Gold.png";
 import styles from "./Game.module.scss";
 
 export const Game = ({
@@ -28,9 +28,12 @@ export const Game = ({
       <h1>{title}</h1>
       <p className={styles.description}>{description}</p>
       <p>Genre: {genre}</p>
-      <p>{price} €</p>
+      <p className={styles.priceTag}>
+        {price}
+        <img src={Gold} alt="gold coin" className={styles.goldCoin}></img>
+      </p>
       <p>
-        {platform == "PC (Windows)" ? (
+        {platform === "PC (Windows)" ? (
           <span>
             <AiFillWindows />
           </span>

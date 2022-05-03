@@ -30,7 +30,16 @@
   width: 90%;
 }
 
+.priceTage {
+  display: flex;
+  gap: 0px;
+}
 
+.goldCoin {
+  width: 35px;
+  height: 35px;
+  margin: 0 !important;
+}
 //DESKTOP
 
 @media screen and (min-width: 965px) {

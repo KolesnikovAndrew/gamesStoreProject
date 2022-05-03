@@ -6,20 +6,13 @@ import Searchbar from "../../Searchbar/Searchbar";
 import GamesCarousel from "../../utils/Carousel/Carousel";
 import styles from "./GameList.module.scss";
 
-export const GameList = ({
-  games,
-  setCount,
-  setProduct,
-  product,
-  addEntry,
-}) => {
+export const GameList = ({ games, setCount, setProduct, addEntry }) => {
   //Pagination
   const [currentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(12);
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentGames = games;
 
   const paginate = () => {
     setProductsPerPage(productsPerPage + 12);
@@ -28,11 +21,13 @@ export const GameList = ({
   //Filter games
   const [filterText, setFilterText] = useState("");
   const [filterGenre, setFIlterGenre] = useState("");
+  const [filterPrice, setFilterPrice] = useState([0, 10]);
 
   const filteredGames = games
     .filter((game) => game.title.toLowerCase().match(filterText.toLowerCase()))
-    .filter((game) =>
-      game.genre.toLowerCase().match(filterGenre.toLowerCase())
+    .filter((game) => game.genre.toLowerCase().match(filterGenre.toLowerCase()))
+    .filter(
+      (game) => game.price >= filterPrice[0] && game.price <= filterPrice[1]
     );
 
   return (
@@ -44,6 +39,8 @@ export const GameList = ({
       <Searchbar
         setFIlterGenre={setFIlterGenre}
         setFilterText={setFilterText}
+        filterPrice={filterPrice}
+        setFilterPrice={setFilterPrice}
       />
       <div className={styles.gamelist}>
         {filteredGames

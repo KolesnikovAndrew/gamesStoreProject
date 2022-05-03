@@ -14,7 +14,7 @@ const shopReducer = (state = initialState, action) => {
     case SET_GAMES: {
       let gamesWithAddedPrice = action.games.map((game) => ({
         ...game,
-        price: (Math.random() * 100).toFixed(2),
+        price: (Math.random() * 10).toFixed(0),
       }));
       return {
         ...state,

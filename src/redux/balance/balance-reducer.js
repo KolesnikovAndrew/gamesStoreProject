@@ -1,5 +1,3 @@
-import { shopAPI } from "../../api/api";
-
 const SET_BALANCE = "SET_BALANCE";
 let initialState = {
   balance: 1000,

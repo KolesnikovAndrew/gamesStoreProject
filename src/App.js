@@ -11,6 +11,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ProductContainer from "./components/Pages/Product/ProductContainer";
 import CartContainer from "./components/Pages/Cart/CartContainer";
+import GoldmineContainer from "./components/Pages/Goldmine/GoldmineContainer";
 
 function App() {
   const id = window.location.hash.split("/")[2];
@@ -21,7 +22,7 @@ function App() {
       <Routes>
         <Route path={"/product/" + id} element={<ProductContainer id={id} />} />
         <Route path={"/cart"} element={<CartContainer />} />
-
+        <Route path={"/goldmine"} element={<GoldmineContainer />} />
         <Route path="/" exact element={<GamesListContainer />} />
       </Routes>
       <Footer />

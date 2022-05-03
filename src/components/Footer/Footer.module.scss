@@ -2,8 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   background-color: #2b2b2b;
   color: white;
   height: 100px;
   width: 100%;
+
+  a{
+    color: white;
+    text-decoration: none;
+  }
 }

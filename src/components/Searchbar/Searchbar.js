@@ -1,22 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
-import Dropdown from "react-bootstrap/Dropdown";
-import Button from "react-bootstrap/Button";
+import Typography from "@material-ui/core/Typography";
+import { createTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
+import Slider from "@material-ui/core/Slider";
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
+
 import styles from "./Searchbar.module.scss";
 
 const genres = ["Shooter", "MMORPG", "Card Game"];
 
-export const Searchbar = ({ setFilterText, setFIlterGenre }) => {
+const red = "rgb(156, 52, 52)";
+
+const muiTheme = createTheme({
+  overrides: {
+    MuiSlider: {
+      thumb: {
+        color: red,
+      },
+      track: {
+        color: red,
+      },
+      rail: {
+        color: "grey",
+      },
+    },
+  },
+});
+
+export const Searchbar = ({
+  setFilterText,
+  setFIlterGenre,
+  setFilterPrice,
+  filterPrice,
+}) => {
   const [moreOptions, setMoreOptions] = useState(false);
+
   const getFilterData = (e) => {
     setFilterText(e.target.value);
   };
   const getFilterGenre = (e) => {
     e.target.checked ? setFIlterGenre(e.target.value) : setFIlterGenre("");
   };
+
+  const getFilterPrice = (e, newValue) => {
+    setFilterPrice(newValue);
+  };
+
   return (
     <div className={styles.searchBar}>
       <div className="container h-100">
@@ -70,6 +103,19 @@ export const Searchbar = ({ setFilterText, setFIlterGenre }) => {
             })}
           </ul>
           <h3>Price</h3>
+          <div>
+            <Typography>Select Price Range:</Typography>
+            <ThemeProvider theme={muiTheme}>
+              <Slider
+                onChange={getFilterPrice}
+                value={filterPrice}
+                valueLabelDisplay="auto"
+                min={0}
+                max={10}
+              />
+            </ThemeProvider>
+            Your range of Price is between {filterPrice[0]} and {filterPrice[1]}
+          </div>
         </div>
       ) : null}
     </div>

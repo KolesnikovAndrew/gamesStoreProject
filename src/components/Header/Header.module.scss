@@ -1,21 +1,20 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: right;
   background-color: #2b2b2b;
+  justify-content: space-around;
   color: white;
   height: 100px;
   width: 100%;
   gap: 20px;
   text-decoration: none;
 
-  :hover{
+  :hover {
     color: grey;
   }
   :active {
     color: rgb(156, 52, 52);
   }
-
 }
 
 .cartIcon {
@@ -39,5 +38,4 @@
   h1 {
     font-size: 40px;
   }
-
 }

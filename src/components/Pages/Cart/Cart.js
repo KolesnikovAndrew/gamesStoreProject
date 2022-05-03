@@ -41,7 +41,7 @@ export const Cart = ({ cart, removeEntry }) => {
         </div>
 
         <div className={styles.totalCost}>
-          <span>Total cost: {sumPrices()} €</span>
+          <span>Total cost: {sumPrices()} Coins</span>
         </div>
       </div>
     </div>
