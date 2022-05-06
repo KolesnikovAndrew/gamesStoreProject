@@ -13,12 +13,12 @@ import ProductContainer from "./components/Pages/Product/ProductContainer";
 import CartContainer from "./components/Pages/Cart/CartContainer";
 import GoldmineContainer from "./components/Pages/Goldmine/GoldmineContainer";
 
-function App() {
+function App({ balance }) {
   const id = window.location.hash.split("/")[2];
 
   return (
     <div className="App">
-      <Header />
+      <Header balance={balance} />
       <Routes>
         <Route path={"/product/" + id} element={<ProductContainer id={id} />} />
         <Route path={"/cart"} element={<CartContainer />} />
@@ -33,6 +33,7 @@ function App() {
 const mapStateToProps = (state) => ({
   initialized: state.shop.initialized,
   product: state.shop.product,
+  balance: state.balance.balance,
 });
 
 let AppContainer = compose(connect(mapStateToProps, { requestGames }))(App);

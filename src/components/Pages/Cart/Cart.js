@@ -2,8 +2,9 @@ import React from "react";
 
 import CartPanel from "./CartPanel/CartPanel";
 import styles from "./Cart.module.scss";
+import Gold from "../../../assets/Gold.png";
 
-export const Cart = ({ cart, removeEntry }) => {
+export const Cart = ({ cart, removeEntry, clearCart }) => {
   const sumPrices = () => {
     switch (true) {
       case cart.length > 1:
@@ -14,8 +15,12 @@ export const Cart = ({ cart, removeEntry }) => {
       case cart.length === 1:
         return cart[0].price;
       case cart.length < 1:
-        return "-";
+        return 0;
     }
+  };
+
+  const buyAllFromCart = () => {
+    clearCart();
   };
 
   return (
@@ -41,7 +46,14 @@ export const Cart = ({ cart, removeEntry }) => {
         </div>
 
         <div className={styles.totalCost}>
-          <span>Total cost: {sumPrices()} Coins</span>
+          <span>
+            Total cost: {sumPrices()}
+            <img src={Gold} alt="goldCoin" width="24px" height="24px"></img>
+          </span>
+        </div>
+
+        <div className={styles.buyButton}>
+          <button onClick={buyAllFromCart}>BUY</button>
         </div>
       </div>
     </div>

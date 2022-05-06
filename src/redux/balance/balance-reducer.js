@@ -1,6 +1,7 @@
 const SET_BALANCE = "SET_BALANCE";
+const ADD_POINTS = "ADD_POINTS";
 let initialState = {
-  balance: 1000,
+  balance: 5,
 };
 
 const balanceReducer = (state = initialState, action) => {
@@ -11,16 +12,22 @@ const balanceReducer = (state = initialState, action) => {
         balance: action.balance,
       };
     }
+    case ADD_POINTS: {
+      return {
+        ...state,
+        balance: state.balance + action.pointsCount,
+      };
+    }
 
     default:
       return state;
   }
 };
 
-export const setCartList = (balance) => ({ type: SET_BALANCE, balance });
-
 export const getBalance = (state) => {
   return state.balance;
 };
+
+export const addPoints = (pointsCount) => ({ type: ADD_POINTS, pointsCount });
 
 export default balanceReducer;

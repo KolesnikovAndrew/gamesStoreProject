@@ -9,7 +9,11 @@ export class CartContainer extends React.Component {
   render() {
     return (
       <div>
-        <Cart removeEntry={this.props.removeEntry} cart={this.props.cart} />
+        <Cart
+          removeEntry={this.props.removeEntry}
+          clearCart={this.props.clearCart}
+          cart={this.props.cart}
+        />
       </div>
     );
   }
@@ -25,6 +29,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     removeEntry: (id) => {
       dispatch({ type: "REMOVE_ENTRY", id });
+    },
+    clearCart: () => {
+      dispatch({ type: "CLEAR_CART" });
     },
   };
 };

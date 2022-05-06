@@ -2,7 +2,7 @@ import React from "react";
 import { AiFillWindows } from "react-icons/ai";
 
 import styles from "./CartPanel.module.scss";
-
+import Gold from "../../../../assets/Gold.png";
 export const CartPanel = ({
   id,
   thumbnail,
@@ -29,7 +29,10 @@ export const CartPanel = ({
           )}
         </p>
         <div className={styles.gamePrice}>
-          <p>{price == 0.0 ? "Free" : `${price} Coins`}</p>
+          <p>
+            {price == 0.0 ? "Free" : `${price}  `}
+            <img src={Gold} alt="goldCoin" width="28px" height="28px"></img>
+          </p>
           <button className={styles.deleteButton} onClick={deleteEntry}>
             DELETE
           </button>

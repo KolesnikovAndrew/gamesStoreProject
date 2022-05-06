@@ -20,12 +20,16 @@ export const GameList = ({ games, setCount, setProduct, addEntry }) => {
 
   //Filter games
   const [filterText, setFilterText] = useState("");
-  const [filterGenre, setFIlterGenre] = useState("");
+  const [filterGenre, setFIlterGenre] = useState([]);
   const [filterPrice, setFilterPrice] = useState([0, 10]);
 
   const filteredGames = games
     .filter((game) => game.title.toLowerCase().match(filterText.toLowerCase()))
-    .filter((game) => game.genre.toLowerCase().match(filterGenre.toLowerCase()))
+    .filter((game) =>
+      filterGenre.length > 0
+        ? filterGenre.includes(game.genre.toLowerCase())
+        : game.genre
+    )
     .filter(
       (game) => game.price >= filterPrice[0] && game.price <= filterPrice[1]
     );
@@ -41,6 +45,7 @@ export const GameList = ({ games, setCount, setProduct, addEntry }) => {
         setFilterText={setFilterText}
         filterPrice={filterPrice}
         setFilterPrice={setFilterPrice}
+        filterGenre={filterGenre}
       />
       <div className={styles.gamelist}>
         {filteredGames

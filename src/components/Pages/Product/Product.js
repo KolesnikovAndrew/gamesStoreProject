@@ -4,6 +4,7 @@ import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
 import Review from "../../Review/Review";
 import AddToCart from "../../utils/AddToCart/AddToCart";
 import { PLATFORMS } from "../../utils/constants";
+import Gold from "../../../assets/Gold.png";
 
 import styles from "./Product.module.scss";
 
@@ -22,7 +23,7 @@ export const Product = ({ addEntry, id }) => {
     });
   };
 
-  productFromAPI ? console.log("") : loadGame();
+  productFromAPI ? console.log(productFromAPI) : loadGame();
 
   return (
     <>
@@ -49,7 +50,15 @@ export const Product = ({ addEntry, id }) => {
           <div className={styles.addToCart}>
             <div className={styles.addToCartText}>
               <p>Buy {productFromAPI.title.toUpperCase()}</p>
-              <p>{productFromAPI.price} €</p>
+              <p>
+                {productFromAPI.price}
+                <img
+                  src={Gold}
+                  width="25px"
+                  height="25px"
+                  alt="gold coin"
+                ></img>
+              </p>
             </div>
 
             <div className={styles.addToCartButton}>

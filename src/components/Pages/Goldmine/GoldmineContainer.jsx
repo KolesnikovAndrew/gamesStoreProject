@@ -8,28 +8,28 @@ import {
   getProduct,
 } from "../../../redux/shop/shop-reducer";
 import Goldmine from "./Goldmine";
-export const GoldmineContainer =()=> {
+import { addPoints } from "../../../redux/balance/balance-reducer";
+export class GoldmineContainer extends React.Component {
   
-
-    return (
+  render() {
+     return (
       <div>
-        <Goldmine/>
+        <Goldmine addPoints={this.props.addPoints}/>
       </div>
     );
+  }
+   
   
 }
 
-let mapDispatchToProps =()=>{
-  
-}
+
 
 let mapStateToProps = (state) => {
   return {
-    games: getGames(state),
-    product: getProduct(state),
+    
   };
 };
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps, {addPoints})
 )(GoldmineContainer);

@@ -36,6 +36,7 @@ export const Searchbar = ({
   setFIlterGenre,
   setFilterPrice,
   filterPrice,
+  filterGenre,
 }) => {
   const [moreOptions, setMoreOptions] = useState(false);
 
@@ -43,7 +44,14 @@ export const Searchbar = ({
     setFilterText(e.target.value);
   };
   const getFilterGenre = (e) => {
-    e.target.checked ? setFIlterGenre(e.target.value) : setFIlterGenre("");
+    e.target.checked
+      ? setFIlterGenre((filterGenre) => [
+          ...filterGenre,
+          e.target.value.toLowerCase(),
+        ])
+      : setFIlterGenre(
+          filterGenre.filter((genre) => genre != e.target.value.toLowerCase())
+        );
   };
 
   const getFilterPrice = (e, newValue) => {
@@ -87,18 +95,16 @@ export const Searchbar = ({
           <ul>
             {genres.map((genre) => {
               return (
-                <>
-                  <li>
-                    <input
-                      type="checkbox"
-                      id={genre}
-                      name={genre}
-                      value={genre}
-                      onChange={getFilterGenre}
-                    />
-                    <label for={genre}> {genre}</label>
-                  </li>
-                </>
+                <li>
+                  <input
+                    type="checkbox"
+                    id={genre}
+                    name="genre"
+                    value={genre}
+                    onChange={getFilterGenre}
+                  />
+                  <label for={genre}> {genre}</label>
+                </li>
               );
             })}
           </ul>
@@ -114,7 +120,6 @@ export const Searchbar = ({
                 max={10}
               />
             </ThemeProvider>
-            Your range of Price is between {filterPrice[0]} and {filterPrice[1]}
           </div>
         </div>
       ) : null}

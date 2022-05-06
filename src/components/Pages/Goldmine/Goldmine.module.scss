@@ -1,5 +1,11 @@
-.goldmineInfo{
+.goldmine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
+.goldmineInfo {
   color: white;
   text-align: center;
   padding: 20px;
