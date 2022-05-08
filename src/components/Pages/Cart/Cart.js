@@ -22,11 +22,10 @@ export const Cart = ({ cart, removeEntry, clearCart, balance, takePoints }) => {
 
   const buyAllFromCart = () => {
     if (balance >= totalCost) {
-      console.log("Products purchased!");
       takePoints(totalCost);
       clearCart();
     } else if (balance < totalCost) {
-      alert("you have no money");
+      alert("You don't have enough tokens to buy these products!");
     } else {
       alert("Unexpected error");
     }
