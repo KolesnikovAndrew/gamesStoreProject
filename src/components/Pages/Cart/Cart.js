@@ -4,13 +4,12 @@ import CartPanel from "./CartPanel/CartPanel";
 import styles from "./Cart.module.scss";
 import Gold from "../../../assets/Gold.png";
 
-export const Cart = ({ cart, removeEntry, clearCart }) => {
+export const Cart = ({ cart, removeEntry, clearCart, balance, takePoints }) => {
   const sumPrices = () => {
     switch (true) {
       case cart.length > 1:
-        let result = cart.reduce((total, arr) => {
-          return total.price + arr.price;
-        });
+        let result = cart.reduce((total, item) => item.price + total, 0);
+
         return result;
       case cart.length === 1:
         return cart[0].price;
@@ -19,8 +18,18 @@ export const Cart = ({ cart, removeEntry, clearCart }) => {
     }
   };
 
+  const totalCost = sumPrices();
+
   const buyAllFromCart = () => {
-    clearCart();
+    if (balance >= totalCost) {
+      console.log("Products purchased!");
+      takePoints(totalCost);
+      clearCart();
+    } else if (balance < totalCost) {
+      alert("you have no money");
+    } else {
+      alert("Unexpected error");
+    }
   };
 
   return (
@@ -47,7 +56,7 @@ export const Cart = ({ cart, removeEntry, clearCart }) => {
 
         <div className={styles.totalCost}>
           <span>
-            Total cost: {sumPrices()}
+            Total cost: {totalCost}
             <img src={Gold} alt="goldCoin" width="24px" height="24px"></img>
           </span>
         </div>

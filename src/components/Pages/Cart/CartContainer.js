@@ -3,7 +3,13 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 
 import Cart from "./Cart";
-import { getCart } from "../../../redux/cart/cart-reducer";
+
+import {
+  clearCart,
+  getCart,
+  removeEntry,
+} from "../../../redux/cart/cart-reducer";
+import { getBalance, takePoints } from "../../../redux/balance/balance-reducer";
 
 export class CartContainer extends React.Component {
   render() {
@@ -13,6 +19,8 @@ export class CartContainer extends React.Component {
           removeEntry={this.props.removeEntry}
           clearCart={this.props.clearCart}
           cart={this.props.cart}
+          balance={this.props.balance}
+          takePoints={this.props.takePoints}
         />
       </div>
     );
@@ -22,20 +30,10 @@ export class CartContainer extends React.Component {
 let mapStateToProps = (state) => {
   return {
     cart: getCart(state),
+    balance: getBalance(state),
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    removeEntry: (id) => {
-      dispatch({ type: "REMOVE_ENTRY", id });
-    },
-    clearCart: () => {
-      dispatch({ type: "CLEAR_CART" });
-    },
-  };
-};
-
-export default compose(connect(mapStateToProps, mapDispatchToProps))(
-  CartContainer
-);
+export default compose(
+  connect(mapStateToProps, { removeEntry, clearCart, takePoints })
+)(CartContainer);
