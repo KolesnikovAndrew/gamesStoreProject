@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/gamesStoreProject/static/css/main.843c6c5d.css",
-    "main.js": "/gamesStoreProject/static/js/main.f9c74c0a.js",
+    "main.css": "/gamesStoreProject/static/css/main.50fe0707.css",
+    "main.js": "/gamesStoreProject/static/js/main.cfcbcdae.js",
     "static/js/787.edd59a96.chunk.js": "/gamesStoreProject/static/js/787.edd59a96.chunk.js",
     "static/media/carouselBackground.png": "/gamesStoreProject/static/media/carouselBackground.122bb67a96849942b115.png",
     "static/media/Gold.png": "/gamesStoreProject/static/media/Gold.c6c8cdc4202c2a2d3f20.png",
     "index.html": "/gamesStoreProject/index.html",
-    "main.843c6c5d.css.map": "/gamesStoreProject/static/css/main.843c6c5d.css.map",
-    "main.f9c74c0a.js.map": "/gamesStoreProject/static/js/main.f9c74c0a.js.map",
+    "main.50fe0707.css.map": "/gamesStoreProject/static/css/main.50fe0707.css.map",
+    "main.cfcbcdae.js.map": "/gamesStoreProject/static/js/main.cfcbcdae.js.map",
     "787.edd59a96.chunk.js.map": "/gamesStoreProject/static/js/787.edd59a96.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.843c6c5d.css",
-    "static/js/main.f9c74c0a.js"
+    "static/css/main.50fe0707.css",
+    "static/js/main.cfcbcdae.js"
   ]
 }
