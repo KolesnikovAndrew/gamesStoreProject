@@ -1,0 +1,48 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color:rgba(179, 95, 95, 0.4) ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.popupInner{
+  background-color: #2b2b2b;
+  border-radius: 15px;
+  color: white;
+  position: relative;
+  padding: 50px;
+  width: 100%;
+  max-width: 640px;
+}
+
+.popupInner .closeBtn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background-color: transparent;
+  border: none;
+  color: rgb(156, 52, 52);
+  font-size: 25px;
+
+  &:hover {
+    color: rgb(241, 126, 126)
+  }
+}
+
+.popupContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.popupIcon{
+  font-size: 65px;
+}

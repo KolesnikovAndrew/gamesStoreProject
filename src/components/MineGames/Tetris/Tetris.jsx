@@ -21,8 +21,8 @@ export const Tetris = ({addPoints}) => {
 		};
 
 	canvas.drawBackground = function() {
-		this.context.fillStyle = "#f8f8ff";
-		this.context.strokeStyle = "#696969";
+		this.context.fillStyle = "rgb(180, 80, 80)";
+		this.context.strokeStyle = "white";
 		this.context.fillRect(0, 0, this.width, this.height);
 		this.context.lineWidth = 8;
 		this.context.strokeRect(0, 0, this.width, this.height);
@@ -32,7 +32,7 @@ export const Tetris = ({addPoints}) => {
 		this.context.lineTo(256, this.height);
 		this.context.stroke();
 		this.context.closePath();
-		this.context.fillStyle = "#696969";
+		this.context.fillStyle = "#2b2b2b";
 		this.context.fillText("SCORE:", 298, 75);
 		this.context.fillText(game.score.amount, 330 - game.score.halfWidth, 125);
 		this.context.fillText("NEXT:", 308, 220);
@@ -76,14 +76,14 @@ export const Tetris = ({addPoints}) => {
 	};
 
 	canvas.drawPause = function(gameTextNum) {
-		this.context.fillStyle = "#f8f8ff";
-		this.context.strokeStyle = "#696969";
+		this.context.fillStyle = "#2b2b2b";
+		this.context.strokeStyle = "rgb(156, 52, 52)";
 
 		this.context.fillRect(50, 110, 158, 80);
 		this.context.strokeRect(50, 110, 158, 80);
-		this.context.strokeRect(53, 113, 152, 74);
+		
 
-		this.context.fillStyle = "#696969";
+		this.context.fillStyle = "rgb(156, 52, 52)";
 		this.context.fillText(game.pauseText[gameTextNum].text, 130 - game.pauseText[gameTextNum].halfWidth, 155);
 
 		this.context.strokeStyle = "#f8f8ff";
@@ -658,13 +658,13 @@ export const Tetris = ({addPoints}) => {
   
     <div className={styles.tetrisContainer}>
       <h1>Golden Tetris</h1>
-			{'You earned '+coinsEarned+' points!'}
       <div id="canvasTetris"></div>
       <div class={styles.tetrisDescription}>
         <p>
 					&#8592; &#8593; &#8594; &#8595; to move, P to pause
 				</p>
         <p>Speed increases every 1000 earned score points</p>
+				<p>Each 100 points gives 1 Golden Coin</p>
         <p>Click to play</p>
 	    </div>
     </div>

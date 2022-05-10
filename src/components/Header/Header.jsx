@@ -7,22 +7,17 @@ import styles from "./Header.module.scss"
 export const Header = ({balance}) => {
   return (
     <div className={styles.header}>
-      <NavLink className={styles.logo} to={'/'}><h1>Shop</h1></NavLink>
-      <NavLink className={styles.logo} to={'/goldmine'}><h1>Goldmine</h1></NavLink>
+      <NavLink className={styles.logo} to={'/'}><>SHOP</></NavLink>
+      <NavLink className={styles.logo} to={'/goldmine'}><>GOLDMINE</></NavLink>
       <span>
           {balance}
           <img src={Gold} alt="goldCoin" width='24px' height='24px'></img>
       </span>
       <NavLink className={styles.cartIcon} to="/cart">
-        
-        <span>
-          
+        <span>   
           <IoMdCart />
-          
         </span>
-        
       </NavLink>
-      
     </div>
   );
 };
