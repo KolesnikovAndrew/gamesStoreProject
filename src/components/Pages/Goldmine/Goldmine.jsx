@@ -1,5 +1,5 @@
 import React from 'react'
-import Tetris from '../../MineGames/Tetris/Tetris'
+import Tetris from '../../MiniGames/Tetris/Tetris'
 import styles from './Goldmine.module.scss'
 export const Goldmine = ({addPoints}) => {
 

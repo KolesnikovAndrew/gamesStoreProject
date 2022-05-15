@@ -1,0 +1,51 @@
+//RegStagesController
+
+.registrationFormContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.stageController {
+  display: flex;
+  gap: 20px;
+}
+
+.stageContollerButton {
+
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  font-weight: bold;
+  font-size: 30px;
+  width: 250px;
+  max-width: 400px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #555353;
+  }
+}
+
+.choiseSeparator {
+  border-left: 4px solid rgb(156, 52, 52);
+  height: 200px;
+}
+
+
+//RegContact
+
+.regContact{
+  display: flex;
+  flex-direction: column;
+}
+
+//RegBilling
+.regBilling{
+  display: flex;
+  flex-direction: column;
+}

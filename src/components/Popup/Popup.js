@@ -20,9 +20,7 @@ function Popup(props) {
         </div>
       </div>
     </div>
-  ) : (
-    "ha"
-  );
+  ) : null;
 }
 
 export default Popup;
