@@ -14,7 +14,6 @@
 }
 
 .stageContollerButton {
-
   color: white;
   display: flex;
   align-items: center;
@@ -36,16 +35,25 @@
   height: 200px;
 }
 
-
 //RegContact
 
-.regContact{
+.regContact {
   display: flex;
   flex-direction: column;
 }
 
 //RegBilling
-.regBilling{
+.regBilling {
   display: flex;
   flex-direction: column;
+}
+
+//Errors
+
+.activeError {
+  color: red;
+}
+
+.noError{
+  visibility: hidden;
 }

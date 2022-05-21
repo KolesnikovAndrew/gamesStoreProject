@@ -1,18 +1,13 @@
-import React, { useState } from "react";
-import { AiOutlineCloseSquare } from "react-icons/ai";
-import Popup from "../Popup/Popup";
-
-import RegContact from "../RegStages/RegContact";
+import React from "react";
 import RegStagesController from "../RegStages/RegStagesController";
-import { RegStagesControllerContainer } from "../RegStages/RegStagesControllerContainer";
 
 import styles from "./RegistrationModal.module.scss";
 function RegistrationForm({
   setBuyWithoutReg,
   buyAllFromCart,
-  setRegChoiceTrigger,
-  setRegPhaze,
   setPopupText,
+  userData,
+  setAuth,
 }) {
   return (
     <div className={styles.registrationFormContent}>
@@ -32,7 +27,11 @@ function RegistrationForm({
           className={styles.regChoiseButton}
           onClick={() => {
             setPopupText(
-              <RegStagesControllerContainer buyAllFromCart={buyAllFromCart} />
+              <RegStagesController
+                buyAllFromCart={buyAllFromCart}
+                userData={userData}
+                setAuth={setAuth}
+              />
             );
           }}
         >

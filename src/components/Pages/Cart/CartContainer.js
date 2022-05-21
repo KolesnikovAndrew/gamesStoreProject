@@ -10,7 +10,7 @@ import {
   removeEntry,
 } from "../../../redux/cart/cart-reducer";
 import { getBalance, takePoints } from "../../../redux/balance/balance-reducer";
-
+import { getUserData } from "../../../redux/registration/registration-reducer";
 export class CartContainer extends React.Component {
   render() {
     return (
@@ -21,6 +21,7 @@ export class CartContainer extends React.Component {
           cart={this.props.cart}
           balance={this.props.balance}
           takePoints={this.props.takePoints}
+          userData={this.props.userData}
         />
       </div>
     );
@@ -31,6 +32,7 @@ let mapStateToProps = (state) => {
   return {
     cart: getCart(state),
     balance: getBalance(state),
+    userData: getUserData(state),
   };
 };
 

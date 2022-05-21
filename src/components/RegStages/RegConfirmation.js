@@ -2,12 +2,12 @@ import React from "react";
 
 import styles from "./RegContact.module.scss";
 
-export const RegConfirmation = ({ buyAllFromCart }) => {
+export const RegConfirmation = ({ userDataLocal, onChangeHandle }) => {
   return (
     <div>
       <>
         <label>I agree to the terms of service</label>
-        <input type="checkbox"></input>
+        <input type="checkbox" name="tos"></input>
         <button className={styles.stageContollerButton} type="submit">
           Submit
         </button>

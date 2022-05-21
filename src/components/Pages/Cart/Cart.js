@@ -10,7 +10,14 @@ import Gold from "../../../assets/Gold.png";
 import RegistrationModal from "../../RegistrationForm/RegistrationModal";
 import RegContact from "../../RegStages/RegContact";
 
-export const Cart = ({ cart, removeEntry, clearCart, balance, takePoints }) => {
+export const Cart = ({
+  cart,
+  removeEntry,
+  clearCart,
+  balance,
+  takePoints,
+  userData,
+}) => {
   const [regChoiceTrigger, setRegChoiceTrigger] = useState(false);
   const [popupText, setPopupText] = useState("Popup text");
   const [popupIcon, setPopupIcon] = useState(
@@ -18,8 +25,6 @@ export const Cart = ({ cart, removeEntry, clearCart, balance, takePoints }) => {
   );
   const [isAuth, setAuth] = useState(false);
   const [buyWithoutReg, setBuyWithoutReg] = useState(false);
-
-  const [trigger, setTrigger] = useState(false);
 
   //Sum all added to cart product's prices
   const sumPrices = () => {
@@ -53,7 +58,7 @@ export const Cart = ({ cart, removeEntry, clearCart, balance, takePoints }) => {
     }
     setRegChoiceTrigger(true);
   };
-  //Registration modal controller
+  //Registration modal
 
   const drawRegistrationModal = () => {
     setPopupText(
@@ -62,6 +67,8 @@ export const Cart = ({ cart, removeEntry, clearCart, balance, takePoints }) => {
         buyAllFromCart={buyAllFromCart}
         setRegChoiceTrigger={setRegChoiceTrigger}
         setPopupText={setPopupText}
+        userData={userData}
+        setAuth={setAuth}
       />
     );
     setPopupIcon(<BsQuestionSquare style={{ color: "rgb(0, 153, 255)" }} />);
