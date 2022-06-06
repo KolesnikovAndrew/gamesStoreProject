@@ -1,0 +1,13 @@
+.regInputContainer {
+  display: flex;
+  flex-direction: column;
+}
+//Errors
+
+.activeError {
+  color: red;
+}
+
+.noError {
+  visibility: hidden;
+}

@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from "react";
-import Validator from "../Validator/Validator";
 import RegBilling from "./RegBilling";
+import RegChoise from "./RegChoise";
 import RegConfirmation from "./RegConfirmation";
 import RegContact from "./RegContact";
 
 import styles from "./RegContact.module.scss";
 
-export const RegStagesController = ({ buyAllFromCart, userData, setAuth }) => {
-  const [userDataLocal, setUserDataLocal] = useState({});
-
+export const RegStagesController = ({
+  buyAllFromCart,
+  userData,
+  setAuth,
+  setBuyWithoutReg,
+}) => {
   const [regStage, setRegStage] = useState(0);
 
   const stages = [
+    <RegChoise
+      regStage={regStage}
+      setRegStage={setRegStage}
+      setBuyWithoutReg={setBuyWithoutReg}
+      buyAllFromCart={buyAllFromCart}
+    />,
+
     <RegContact
       userData={userData}
       regStage={regStage}
@@ -28,24 +38,11 @@ export const RegStagesController = ({ buyAllFromCart, userData, setAuth }) => {
   const regFormSubmit = () => {
     buyAllFromCart();
     setAuth(true);
-    console.log(userDataLocal);
   };
   return (
     <div className={styles.registrationFormContent}>
       <div>
         <form onSubmit={regFormSubmit}>{stages[regStage]}</form>
-      </div>
-
-      <div className={styles.stageController}>
-        <div
-          className={styles.stageContollerButton}
-          onClick={() => {
-            setRegStage(regStage - 1);
-          }}
-        >
-          BACK
-        </div>
-        <div className={styles.choiseSeparator}></div>
       </div>
     </div>
   );

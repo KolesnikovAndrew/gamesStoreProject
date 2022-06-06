@@ -13,7 +13,7 @@
   gap: 20px;
 }
 
-.stageContollerButton {
+.stageControllerButton {
   color: white;
   display: flex;
   align-items: center;
@@ -23,6 +23,7 @@
   font-size: 30px;
   width: 250px;
   max-width: 400px;
+  background-color: #2b2b2b;
 
   &:hover {
     cursor: pointer;
@@ -48,12 +49,21 @@
   flex-direction: column;
 }
 
-//Errors
-
-.activeError {
-  color: red;
+.dateOfExpire {
+  display: flex;
+  gap: 10px;
+}
+.dateofExpireInput {
+  width: 10px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.noError{
-  visibility: hidden;
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

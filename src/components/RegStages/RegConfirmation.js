@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./RegContact.module.scss";
 
-export const RegConfirmation = ({ userDataLocal, onChangeHandle }) => {
+export const RegConfirmation = () => {
   return (
     <div>
       <>

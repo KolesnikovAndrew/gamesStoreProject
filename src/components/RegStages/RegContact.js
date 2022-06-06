@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Validator from "../Validator/Validator";
+import React, { useState } from "react";
 
+import Validator from "../Validator/Validator";
+import RegInput from "../common/RegInput/RegInput";
 import styles from "./RegContact.module.scss";
 
 export const RegContact = ({ setRegStage, regStage }) => {
@@ -45,48 +46,54 @@ export const RegContact = ({ setRegStage, regStage }) => {
 
     if (noErrors) {
       setRegStage(regStage + 1);
-    } else {
     }
   };
 
   return (
     <div className={styles.regContact}>
-      <>
-        <label>Email</label>
-        <input type="email" name="email" onChange={onChangeHandle}></input>
+      <RegInput
+        inputName={"email"}
+        inputType={"email"}
+        onChangeHandle={onChangeHandle}
+        error={error}
+      />
+      <RegInput
+        inputName={"name"}
+        inputType={"text"}
+        onChangeHandle={onChangeHandle}
+        error={error}
+      />
 
-        <div className={error.email ? styles.activeError : styles.noError}>
-          Please provide correct Email.
-        </div>
-      </>
-      <>
-        <label>Name</label>
-        <input type="text" name="name" onChange={onChangeHandle}></input>
-        <div className={error.name ? styles.activeError : styles.noError}>
-          Please provide correct Name.
-        </div>
-      </>
-      <>
-        <label>Surname</label>
-        <input type="text" name="surname" onChange={onChangeHandle}></input>
-        <div className={error.surname ? styles.activeError : styles.noError}>
-          Please provide correct Surname.
-        </div>
-      </>
-      <>
-        <label>Age</label>
-        <input type="number" name="age" onChange={onChangeHandle}></input>
-        <div className={error.age ? styles.activeError : styles.noError}>
-          Please provide correct Age.
-        </div>
-      </>
-      <button
-        type="button"
-        onClick={validateContact}
-        className={styles.stageContollerButton}
-      >
-        Next
-      </button>
+      <RegInput
+        inputName={"surname"}
+        inputType={"text"}
+        onChangeHandle={onChangeHandle}
+        error={error}
+      />
+      <RegInput
+        inputName={"age"}
+        inputType={"number"}
+        onChangeHandle={onChangeHandle}
+        error={error}
+      />
+      
+      <div className={styles.stageController}>
+        <button
+          className={styles.stageControllerButton}
+          onClick={() => {
+            setRegStage(regStage - 1);
+          }}
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          onClick={validateContact}
+          className={styles.stageControllerButton}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

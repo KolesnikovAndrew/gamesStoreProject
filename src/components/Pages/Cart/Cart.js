@@ -7,8 +7,9 @@ import Popup from "../../Popup/Popup";
 import CartPanel from "./CartPanel/CartPanel";
 import styles from "./Cart.module.scss";
 import Gold from "../../../assets/Gold.png";
-import RegistrationModal from "../../RegistrationForm/RegistrationModal";
+import RegistrationModal from "../../RegStages/RegChoise";
 import RegContact from "../../RegStages/RegContact";
+import RegStagesController from "../../RegStages/RegStagesController";
 
 export const Cart = ({
   cart,
@@ -62,7 +63,7 @@ export const Cart = ({
 
   const drawRegistrationModal = () => {
     setPopupText(
-      <RegistrationModal
+      <RegStagesController
         setBuyWithoutReg={setBuyWithoutReg}
         buyAllFromCart={buyAllFromCart}
         setRegChoiceTrigger={setRegChoiceTrigger}

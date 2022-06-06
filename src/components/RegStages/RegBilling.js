@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
+import DateOfExpireInput from "../common/DateOfExpireInput/DateOfExpireInput";
+import RegInput from "../common/RegInput/RegInput";
 import Validator from "../Validator/Validator";
 
 import styles from "./RegContact.module.scss";
-
-export const RegBilling = ({
-  userData,
-  validateLocalData,
-  setRegStage,
-  regStage,
-}) => {
+export const RegBilling = ({ setRegStage, regStage }) => {
+  const [expireMonth, setExpireMonth] = useState("00");
+  const [expireYear, setExpireYear] = useState("00");
+  // console.log(expireMonth);
+  // console.log(expireYear);
   const [regBillingData, setRegBillingData] = useState({
     cardNumber: "",
     fullName: "",
     dateofExpire: "",
     CVC: "",
   });
+
   const [error, setError] = useState({
     cardNumber: false,
     fullName: false,
@@ -22,14 +23,8 @@ export const RegBilling = ({
     CVC: false,
   });
 
-  const onChangeHandle = (e) => {
-    setRegBillingData(() => ({
-      ...regBillingData,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
   const validateBilling = () => {
+    console.log(regBillingData);
     setError({
       cardNumber: false,
       fullName: false,
@@ -47,59 +42,60 @@ export const RegBilling = ({
       CVC: error.CVC,
     });
     const noErrors = Object.values(error).every((value) => value === false);
-
     if (noErrors) {
       setRegStage(regStage + 1);
-    } else {
     }
   };
   return (
     <div className={styles.regBilling}>
-      <>
-        <label>Card number</label>
-        <input
-          type="number"
-          onChange={onChangeHandle}
-          name="cardNumber"
-        ></input>
-        <div className={error.cardNumber ? styles.activeError : styles.noError}>
-          Please provide correct Card number.
-        </div>
-      </>
-      <>
-        <label>Full Name</label>
-        <input type="text" name="fullName" onChange={onChangeHandle}></input>
-        <div className={error.fullName ? styles.activeError : styles.noError}>
-          Please provide correct Full name.
-        </div>
-      </>
-      <>
-        <label>Date of expire</label>
-        <input
-          type="text"
-          name="dateofExpire"
-          onChange={onChangeHandle}
-        ></input>
-        <div
-          className={error.dateofExpire ? styles.activeError : styles.noError}
+      <RegInput
+        inputName={"cardNumber"}
+        inputType={"number"}
+        regBillingData={regBillingData}
+        setRegBillingData={setRegBillingData}
+        error={error}
+      />
+      <RegInput
+        inputName={"fullName"}
+        inputType={"text"}
+        regBillingData={regBillingData}
+        setRegBillingData={setRegBillingData}
+        error={error}
+      />
+      <DateOfExpireInput
+        error={error}
+        className={styles.dateofExpireInput}
+        regBillingData={regBillingData}
+        setRegBillingData={setRegBillingData}
+        expireMonth={expireMonth}
+        setExpireMonth={setExpireMonth}
+        expireYear={expireYear}
+        setExpireYear={setExpireYear}
+      />
+      <RegInput
+        inputName={"CVC"}
+        inputType={"number"}
+        regBillingData={regBillingData}
+        setRegBillingData={setRegBillingData}
+        error={error}
+      />
+      <div className={styles.stageController}>
+        <button
+          className={styles.stageControllerButton}
+          onClick={() => {
+            setRegStage(regStage - 1);
+          }}
         >
-          Please provide correct Date of expire.
-        </div>
-      </>
-      <>
-        <label>CVC</label>
-        <input type="number" name="CVC" onChange={onChangeHandle}></input>
-        <div className={error.CVC ? styles.activeError : styles.noError}>
-          Please provide correct CVC.
-        </div>
-      </>
-      <button
-        type="button"
-        onClick={validateBilling}
-        className={styles.stageContollerButton}
-      >
-        Next
-      </button>
+          Back
+        </button>
+        <button
+          type="button"
+          onClick={validateBilling}
+          className={styles.stageControllerButton}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

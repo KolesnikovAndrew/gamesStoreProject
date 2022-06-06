@@ -1,13 +1,11 @@
 import React from "react";
-import RegStagesController from "../RegStages/RegStagesController";
 
-import styles from "./RegistrationModal.module.scss";
-function RegistrationForm({
+import styles from "./RegChoise.module.scss";
+function RegChoise({
   setBuyWithoutReg,
   buyAllFromCart,
-  setPopupText,
-  userData,
-  setAuth,
+  setRegStage,
+  regStage,
 }) {
   return (
     <div className={styles.registrationFormContent}>
@@ -15,8 +13,7 @@ function RegistrationForm({
       <div className={styles.registrationChoise}>
         <div
           onClick={() => {
-            setBuyWithoutReg(true);
-            buyAllFromCart();
+            setRegStage(3);
           }}
           className={styles.regChoiseButton}
         >
@@ -26,13 +23,7 @@ function RegistrationForm({
         <div
           className={styles.regChoiseButton}
           onClick={() => {
-            setPopupText(
-              <RegStagesController
-                buyAllFromCart={buyAllFromCart}
-                userData={userData}
-                setAuth={setAuth}
-              />
-            );
+            setRegStage(regStage + 1);
           }}
         >
           YES
@@ -42,4 +33,4 @@ function RegistrationForm({
   );
 }
 
-export default RegistrationForm;
+export default RegChoise;
