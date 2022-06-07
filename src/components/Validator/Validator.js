@@ -38,7 +38,6 @@ const Validator = (name, value) => {
         let currentDate = new Date();
         let expireDate = new Date();
         expireDate.setFullYear(20 + value[1], value[0] - 1);
-        console.log(expireDate > currentDate);
         if (expireDate > currentDate) {
           return true;
         } else {

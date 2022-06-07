@@ -2,19 +2,25 @@ import React, { useState, useEffect } from "react";
 import DateOfExpireInput from "../common/DateOfExpireInput/DateOfExpireInput";
 import RegInput from "../common/RegInput/RegInput";
 import Validator from "../Validator/Validator";
-
+import { FaCcVisa, FaCcMastercard } from "react-icons/fa";
 import styles from "./RegContact.module.scss";
 export const RegBilling = ({ setRegStage, regStage }) => {
   const [expireMonth, setExpireMonth] = useState("00");
   const [expireYear, setExpireYear] = useState("00");
-  // console.log(expireMonth);
-  // console.log(expireYear);
   const [regBillingData, setRegBillingData] = useState({
     cardNumber: "",
     fullName: "",
     dateofExpire: "",
     CVC: "",
   });
+  const [cardType, setCardType] = useState(null);
+
+  const onChangeHandle = (e) => {
+    setRegBillingData(() => ({
+      ...regBillingData,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const [error, setError] = useState({
     cardNumber: false,
@@ -46,20 +52,45 @@ export const RegBilling = ({ setRegStage, regStage }) => {
       setRegStage(regStage + 1);
     }
   };
+
+  useEffect(() => {
+    setCardType(null);
+    let tests = { visa: /^4[0-9]/, mastercard: /^5[1-5]/ };
+
+    for (const test in tests) {
+      console.log(tests[test].test(regBillingData.cardNumber.slice(0, 2)));
+      if (tests[test].test(regBillingData.cardNumber.slice(0, 2)) === true) {
+        setCardType(test);
+      }
+    }
+  }, [regBillingData]);
+
   return (
     <div className={styles.regBilling}>
       <RegInput
         inputName={"cardNumber"}
         inputType={"number"}
-        regBillingData={regBillingData}
-        setRegBillingData={setRegBillingData}
+        onChangeHandle={onChangeHandle}
         error={error}
       />
+
+      <div className={styles.creditCardIcons}>
+        <FaCcVisa
+          className={
+            cardType == "visa" ? styles.cardActive : styles.cardUnactive
+          }
+        />
+        <FaCcMastercard
+          className={
+            cardType == "mastercard" ? styles.cardActive : styles.cardUnactive
+          }
+        />
+      </div>
+
       <RegInput
         inputName={"fullName"}
         inputType={"text"}
-        regBillingData={regBillingData}
-        setRegBillingData={setRegBillingData}
+        onChangeHandle={onChangeHandle}
         error={error}
       />
       <DateOfExpireInput
@@ -74,9 +105,8 @@ export const RegBilling = ({ setRegStage, regStage }) => {
       />
       <RegInput
         inputName={"CVC"}
-        inputType={"number"}
-        regBillingData={regBillingData}
-        setRegBillingData={setRegBillingData}
+        inputType={"text"}
+        onChangeHandle={onChangeHandle}
         error={error}
       />
       <div className={styles.stageController}>

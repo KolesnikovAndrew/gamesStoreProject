@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import styles from "./DateOfExpireInput.module.scss";
 
@@ -10,6 +10,7 @@ const DateOfExpireInput = ({ regBillingData, setRegBillingData, error }) => {
   };
   const [expireMonth, setExpireMonth] = useState("00");
   const [expireYear, setExpireYear] = useState("00");
+  const yearInput = useRef(null);
 
   const onMonthChange = (e) => {
     setExpireMonth(e.target.value);
@@ -17,6 +18,10 @@ const DateOfExpireInput = ({ regBillingData, setRegBillingData, error }) => {
       ...regBillingData,
       dateofExpire: [e.target.value, expireYear],
     });
+
+    if (e.target.value.length >= 2) {
+      yearInput.current.focus();
+    }
   };
   const onYearChange = (e) => {
     setExpireYear(e.target.value);
@@ -29,7 +34,6 @@ const DateOfExpireInput = ({ regBillingData, setRegBillingData, error }) => {
   const preventPasteNegative = (e) => {
     const clipboardData = e.clipboardData || window.clipboardData;
     const pastedData = parseFloat(clipboardData.getData("text"));
-
     if (pastedData < 0) {
       e.preventDefault();
     }
@@ -57,6 +61,7 @@ const DateOfExpireInput = ({ regBillingData, setRegBillingData, error }) => {
           maxlength="2"
           onPaste={preventPasteNegative}
           onKeyPress={preventMinus}
+          ref={yearInput}
         ></input>
       </div>
 
